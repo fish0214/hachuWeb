@@ -1,0 +1,379 @@
+header{
+    display: flex;
+    padding: 0 100px;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+.title{
+    display: flex;
+    height: 460px;
+    width: 460px;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+.title h1{
+    color: var(--text-blue);
+    position: absolute;
+    text-align: center;
+    font-size: 48px;
+}
+section{
+    display: flex;
+    align-items: center;
+    margin: 0px 120px;
+    height: 100vh;
+}
+section.intro-group{
+    height: auto;
+    flex-direction: column;
+}
+
+section h1{
+    font-size: 80px;
+    font-family: HeaderFont;
+    background-image: linear-gradient(45deg, #49d0df, #017581 80%);
+    background-clip: text;
+    color: transparent;
+    margin: 45px 0;
+}
+section h2{
+    color: var(--text-blue-dark);
+    font-size: 24px;
+    margin-top: 10px;
+}
+section p{
+    color: var(--text-blue-light);
+    font-size: 24px;
+    margin: 0;
+}
+.introtxt-container{
+    text-align: start;
+    padding: 0 30px;
+}
+.introimg-container{
+    width: 100%;
+}
+.concept-hachu .img-container{
+    max-width: 520px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.concept-hachu{
+    gap: 100px;
+}
+.introtxt-container ul{
+    padding: 0;
+}
+.introtxt-container li{
+    list-style: none;
+    font-size: 20px;
+    color: var(--text-pink);
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+}
+.icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 15px;
+}
+.icon-container:hover{
+    cursor: pointer;
+}
+.idea-icon, .icon-bg{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+.icon-bg{
+    animation: pulse 1.2s ease infinite;
+    background: #ffdf5db3;
+}
+.idea-icon{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+}
+.get-text{
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(-10px);
+}
+.get-text.show {
+    display: inline;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+.group-img{
+    width: 500px;
+    border-radius: 50%;
+}
+.bounce2 {
+  animation: bounceXY 7s ease-in-out infinite;
+}
+.bounce3 {
+  animation: bounceXY 4s ease-in-out infinite;
+}
+.bounce4 {
+  animation: bounceXY 6s ease-in-out infinite;
+}
+@keyframes bounceXY {
+  0%,
+  100% {
+    transform: translateX(10px) translateY(15px) rotate(60deg);
+  }
+  50% {
+    transform: translateX(-10px) translateY(-20px) rotate(180deg);
+  }
+}
+.bubble2{
+    width: 80px;
+}
+.bubble3{
+    width: 150px;
+}
+.bubble4{
+    width: 230px;
+}
+
+.introgroup-title{
+    margin: 100px 0;
+    position: relative;
+    display: flex;
+    height: 220px;
+    justify-content: center;
+    right: 30%;
+    flex-direction: column;
+}
+.introgroup-title img {
+    height: 250px;
+    width: fit-content;
+    position: absolute;
+    z-index: -10;
+}
+.introgroup-title h1{
+    text-align: start;
+    margin-top: 0;
+    padding: 0 40px;
+    margin: 20px 0;
+}
+.introgroup-title p{
+    padding: 0 40px;
+}
+
+/* 團隊介紹卡片區塊 */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    padding: 100px 0;
+    max-width: 100%;
+    justify-items: center;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.cards-container, .card{
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.cards-container:hover > :not(:hover){
+    opacity: 0.5;
+    filter: blur(5px);
+}
+.card-img {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 400px;
+    width: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.card-img:hover{
+    background-color: #33333362;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.member-img-1 {
+    background-image: url(/image/member/Rui.jpg);
+}
+.member-img-2 {
+    background-image: url(/image/member/Naomi.jpg);
+}
+.member-img-3 {
+    background-image: url(/image/member/Liang.jpg);
+}
+.member-img-4 {
+    background-image: url(/image/member/Nicky.jpg);
+}
+.member-img-5 {
+    background-image: url(/image/member/Fish.jpg);
+}
+.member-img-6 {
+    background-image: url(/image/member/Jay.jpg);
+}
+
+.card-content {
+    flex-grow: 1; /* 讓內容區塊填滿剩餘空間 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card-txt {
+    display: flex;
+    text-align: center;
+    align-items: center;  
+}
+  
+.card-title {
+    margin: 20px 0;
+    text-align: left;
+}
+  
+.card-txt h3 {
+    color: var(--text-blue-dark);
+    margin: 20px 85px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* 文字進場動畫 */
+.leftin {
+    animation: leftIn 1.5s linear 0s 1 normal forwards;
+}
+@keyframes leftIn {
+    from {
+        transform: translate3d(-30%, 0, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+
+/** 響應式設計 **/
+/* 平板 */
+@media (max-width: 1024px) {
+    .introgroup-title{
+        right: 20%;
+    }
+    .cards-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card-img {
+        height: 300px;
+        width: 200px;
+    }
+    .card-txt h1 {
+        margin: 20px;
+    } 
+}
+/* 手機 */
+@media (max-width: 768px) {
+    .title {
+        display: none;
+    }
+    section {
+        height: 100vh;
+        margin: 0 0px;
+        padding: 30px 30px;
+    }
+
+    .introtxt-container {
+        padding: 0 30px;
+    }
+    .introimg-container {
+        display: none;
+    }
+    .introtxt-container h1 {
+        font-family: HeaderFont;
+        background-image: linear-gradient(45deg, #49d0df, #017581 80%);
+        background-clip: text;
+        color: transparent;
+        font-size: 60px;
+        margin: 0 0 50px 0;
+    }
+    .introtxt-container h2{
+        font-size: 24px;
+    }
+    .introtxt-container p{
+        line-height: 2;
+        font-size: 18px;
+    }
+    .introtxt-container ul {
+        position: absolute;
+        margin: 0;
+        width: 80%;
+    }
+    .introtxt-container li {
+        font-size: 16px;
+    }
+    /*團隊介紹區塊*/
+    .introgroup-title {
+        margin: 0;
+        right: 10%;
+    }
+    .introgroup-title img {
+        height: 200px;
+        width: 200px;
+    }
+    .introgroup-title h1 {
+        font-family: HeaderFont;
+        background-image: linear-gradient(45deg, #49d0df, #017581 80%);
+        background-clip: text;
+        color: transparent;
+        font-size: 60px;
+        margin: 20px 0;
+        padding: 0;
+    }
+    .introgroup-title p {
+        font-size: 19px;
+        padding: 0;
+    }
+    .cards-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .card-img {
+        height: 300px;
+        width: 200px;
+    } 
+    .card-txt h1 {
+        margin: 20px 30px;
+    }
+}

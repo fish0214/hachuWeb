@@ -1,0 +1,336 @@
+.logo {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 99;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+}
+.logo img {
+  height: 450px;
+}
+.mobile-navbar-logo {
+  display: none;
+}
+.map {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 90px 180px;
+  position: relative;
+}
+section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  transition: all ease-out 0.5s;
+  position: relative;
+}
+.blob-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+.blob-container:hover{
+  cursor: pointer;
+  transform: scale(2);
+  transition: all 1s ease-in-out;
+}
+.small-blob-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small-blob-container:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all 0.5s ease-in-out;
+}
+.small-blob-container .blob-blue, .small-blob-container .blob-pink {
+  top: 30px;
+  left: 40px;
+}
+.small-blob-container h1 {
+  font-weight: 400;
+  font-size: 24px;
+  z-index: 10;
+}
+.blob1,
+.blob2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.blob1 {
+  width: 100%;
+  height: 100%;
+  animation: spin 20s infinite linear;
+}
+.blob2 {
+  top: 60px;
+  left: 50px;
+  width: 75%;
+  height: 75%;
+  transform: scale(0.8);
+  opacity: 0.8;
+  filter: blur(20px);
+  animation: spin 5s infinite linear reverse;
+  z-index: 1;
+}
+.blob-pink {
+  background-image: url("/webp/pink_2.webp");
+}
+.blob-blue {
+  background-image: url("/webp/blue_2.webp");
+}
+.smallblob2 {
+  background-image: url("/webp/ball0_front.webp");
+  opacity: 0.5;
+  filter: blur(20px);
+  animation: spin 20s infinite linear reverse;
+  z-index: 1;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.bub-txt {
+  position: relative;
+  right: 20px;
+  z-index: 20;
+  font-size: 34px;
+  font-weight: 400;
+  text-shadow: 0px 0px 11px #ffffff;
+  color: var(--blue-dark);
+}
+.small-blob-container.smallblob1 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+}
+.section-2 .small-blob-container:nth-child(1) {
+  left: 220px;
+}
+.section-2 .small-blob-container:nth-child(2) {
+  left: 200px;
+  top: 150px;
+}
+.section-3 .small-blob-container:nth-child(1) {
+  right: 220px;
+}
+.section-3 .small-blob-container:nth-child(2) {
+  right: 200px;
+  top: 150px;
+}
+.section-4 .small-blob-container {
+  left: 200px;
+}
+.section-canvas{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* 泡泡轉場動畫 */
+body.transitioning {
+  overflow: hidden;
+}
+.clickableBlob {
+  cursor: pointer;
+  transition: opacity 1s ease;
+  z-index: 30;
+}
+.clickableBlob.expanding {
+  animation: enlargeBubble 3s ease-in-out forwards; /* 設定動畫持續時間與效果 */
+}
+@keyframes enlargeBubble {
+  0% {
+    transform: scale(1); /* 初始大小 */
+    opacity: 1;
+  }
+  50% {
+    transform: scale(4); /* 中間放大 */
+    opacity: 1;
+  }
+  70% {
+    transform: scale(10); /* 中間放大 */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(15); /* 最終放大 */
+    opacity: 1; /* 讓泡泡消失 */
+  }
+}
+
+/** 響應式設計 **/
+/*平板*/
+@media (max-width: 1024px) {
+  .logo img {
+    height: 300px;
+  }
+  .map {
+    padding: 90px 150px;
+  }
+  .blob-container {
+    width: 300px;
+    height: 300px;
+  }
+  .small-blob-container {
+    width: 150px;
+    height: 150px;
+  }
+  .small-blob-container h1 {
+    font-size: 18px;
+  }
+  .bub-txt {
+    font-size: 24px;
+  }
+  section {
+    height: 80vh;
+  }
+  .small-blob-container .blob-blue, .small-blob-container .blob-pink {
+    top: 20px;
+    left: 20px;
+  }
+  .section-2 .small-blob-container:nth-child(1) {
+    left: 120px;
+  }
+  .section-2 .small-blob-container:nth-child(2) {
+    left: 100px;
+    top: 100px;
+  }
+  .section-3 .small-blob-container:nth-child(1) {
+    right: 120px;
+  }
+  .section-3 .small-blob-container:nth-child(2) {
+    right: 100px;
+    top: 100px;
+  }
+  .section-4 .small-blob-container {
+    left: 100px;
+  }
+
+}
+/* 手機 */
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+  .logo {
+    padding: 0;
+    margin: 200px 0;
+  }
+  .logo img {
+    height: 140px;
+  }
+  .map {
+    padding: 150px 100px;
+  }
+  .blob-container {
+    width: 250px;
+    height: 250px;
+  }
+  .small-blob-container {
+    width: 130px;
+    height: 130px;
+  }
+  .small-blob-container h1 {
+    font-size: 14px;
+  }
+  .bub-txt {
+    font-size: 18px;
+  }
+  section {
+    height: 70vh;
+  }
+  .small-blob-container .blob-blue, .small-blob-container .blob-pink {
+    left: 15px;
+  }
+  .section-2 .small-blob-container:nth-child(1) {
+    left: 100px;
+  }
+  .section-2 .small-blob-container:nth-child(2) {
+    left: 40px;
+    top: 40px;
+  }
+  .section-3 .small-blob-container:nth-child(1) {
+    right: 120px;
+  }
+  .section-3 .small-blob-container:nth-child(2) {
+    right: 40px;
+    top: 40px;
+  }
+  .section-4 .small-blob-container {
+    left: 50px;
+  }
+  .blob2{
+    height: 50%;
+    top: 60px;
+    left: 30px;
+  }
+}
+
+@media (max-width: 380px){
+  .logo img {
+    height: 120px;
+  }
+  .map {
+    padding: 90px 0px;
+  }
+  .blob-container {
+    width: 200px;
+    height: 200px;
+    flex-direction: row-reverse;
+  }
+  .small-blob-container {
+    width: 100px;
+    height: 100px;
+  }
+  .small-blob-container h1 {
+    font-size: 12px;
+  }
+  .bub-txt {
+    right: 0;
+    font-size: 14px;
+  }
+  section {
+    height: 60vh;
+  }
+  .small-blob-container .blob-blue, .small-blob-container .blob-pink {
+    left: 10px;
+  }
+  .section-2 .small-blob-container:nth-child(1) {
+    left: 40px;
+  }
+  .section-2 .small-blob-container:nth-child(2) {
+    left: 30px;
+    top: 30px;
+  }
+  .section-3 .small-blob-container:nth-child(1) {
+    right: 40px;
+  }
+  .section-3 .small-blob-container:nth-child(2) {
+    right: 30px;
+    top: 30px;
+  }
+  .section-4 .small-blob-container {
+    left: 30px;
+  }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>怪物卡牌</title>
+    <link rel="icon" href="/image/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/monstercard.css">
+</head>
+<body>
+    <div class="finish-content">
+        <div class="intro-txt">
+            <p><span class="highlight-text">hachu</span>碎片 搜集完成！</p>
+        </div>
+    </div>
+
+    <div class="card" id="monsterCard">
+        <div class="card-main bg-blue">
+            <div class="card-bg-pattern">
+                <img class="bg-pattern" src="/image/card/bg_pattern.png" alt="">
+            </div>
+            <div class="card-header">
+                <img class="card-logo" src="/image/card/card_logo.png" alt="">
+                <p class="user-name" id="userName">使用者名稱</p>
+            </div>
+            <div class="rarity"> 
+                <div class="txt-h">
+                    <img src="/image/card/level_H.png" alt="">
+                </div>
+                <div class="star-container" id="starContainer">
+                    <img src="/image/card/level_white.png" alt="">
+                    <img src="/image/card/level_white.png" alt="">
+                    <img src="/image/card/level_white.png" alt="">
+                    <img src="/image/card/level_white.png" alt="">
+                    <img src="/image/card/level_white.png" alt="">
+                    <img src="/image/card/level_white.png" alt="">
+                </div>
+                <div class="txt-l">
+                    <img src="/image/card/level_L.png" alt="">
+                </div>
+            </div>
+            <div class="card-monster">
+                <img class="monster-img" src="./image/card/monster_test.png" alt=""  id="monsterImg" >
+            </div>
+            <div class="attack" id="attack">
+                <img id="attackImg" src="/image/card/attack_5.png" alt="" crossOrigin="anonymous">
+            </div>
+        </div>
+        <div class="info">
+            <div class="info-header">
+                <p class="location-header txt-blue">出沒地點</p>
+            </div>
+            <div class="info-main">
+                <ul class="location" id="location">
+                    <li>毛小孩</li>
+                    <li>沒打掃的房間</li>
+                    <li>流感疫苗</li>
+                    <li>菜市場</li>
+                    <li>媽媽的項鍊</li>
+                    <li>前男友送的花</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="/js/getImagePath.js"></script>
+    <script src="/js/generateCard.js"></script>
+</body>
+</html>

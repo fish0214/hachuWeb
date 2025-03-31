@@ -1,0 +1,416 @@
+/* 全域共用的設定*/ 
+html * {
+	font-family: MyCustomFont;
+}
+/* 中文用 源泉圓體  */
+@font-face {
+	font-family: MyCustomFont;
+	src: url(/fonts/GenSenRounded2TW-M.otf);
+	font-weight: 400;
+	unicode-range: U+4E00-9FFF;
+}
+/* 英文 */
+@font-face {
+	font-family: MyCustomFont;
+	src: url(/fonts/VarelaRound-Regular.ttf);
+	font-weight: 400;
+	unicode-range: U+00-024F;
+}
+/* 粗體中文字 */
+@font-face {
+	font-family: HeaderFont;
+	src: url(/fonts/GenSenRounded2TC-H.otf);
+  font-weight: 400;
+}
+
+:root {
+	font-size: 20px;
+	--red: #da2c4d;
+	--yellow: #f8ab37;
+  --blue-dark: #006177;
+  --bg-blue-light: #ddf9ff;
+  --text-blue: #023c49;
+  --text-blue-dark: #1b315f;
+  --text-blue-light: rgb(84, 107, 137);
+  --text-pink: #F552AB;
+  --text-pink-dark: #540040;
+}
+body{
+  margin: 0;
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none;
+}
+
+/*動態漸層背景*/
+.gradient-bg {
+  background-color: var(--bg-blue-light);
+  background-image: radial-gradient(
+      closest-side,
+      rgb(233 233 233),
+      rgba(235, 105, 78, 0)
+    ),
+    radial-gradient(closest-side, rgb(250 255 234), rgba(243, 11, 164, 0)),
+    radial-gradient(closest-side, rgb(229 235 242), rgba(254, 234, 131, 0)),
+    radial-gradient(closest-side, rgb(255 230 230), rgba(170, 142, 245, 0)),
+    radial-gradient(closest-side, rgb(255 255 255), rgba(248, 192, 147, 0));
+  background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax,
+    110vmax 110vmax, 90vmax 90vmax;
+  background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax,
+    -30vmax 10vmax, 50vmax 50vmax;
+  background-repeat: no-repeat;
+  z-index: -1;
+  animation: 4.5s gradientAnimation linear infinite;
+}
+@keyframes gradientAnimation {
+  0%,
+  100% {
+    background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax,
+      110vmax 110vmax, 90vmax 90vmax;
+    background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax,
+      -30vmax 10vmax, 50vmax 50vmax;
+  }
+  25% {
+    background-size: 100vmax 100vmax, 90vmax 90vmax, 100vmax 100vmax,
+      90vmax 90vmax, 60vmax 60vmax;
+    background-position: -60vmax -90vmax, 50vmax -40vmax, 0vmax -20vmax,
+      -40vmax -20vmax, 40vmax 60vmax;
+  }
+  50% {
+    background-size: 80vmax 80vmax, 110vmax 110vmax, 80vmax 80vmax,
+      60vmax 60vmax, 80vmax 80vmax;
+    background-position: -50vmax -70vmax, 40vmax -30vmax, 10vmax 0vmax,
+      20vmax 10vmax, 30vmax 70vmax;
+  }
+  75% {
+    background-size: 90vmax 90vmax, 90vmax 90vmax, 100vmax 100vmax,
+      90vmax 90vmax, 70vmax 70vmax;
+    background-position: -50vmax -40vmax, 50vmax -30vmax, 20vmax 0vmax,
+      -10vmax 10vmax, 40vmax 60vmax;
+  }
+}
+/*彈跳*/
+.bounce {
+  animation: bounce 7s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* 頁首-導覽列 */
+.mobile-navbar {
+  display: none;
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+.nav-btn, .home-btn {
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+  color: var(--blue-dark);
+  padding: 10px 45px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* 利用伺服元素建立背景泡泡 */
+.nav-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: 170px;
+  background-image: url(/image/nav-btn_1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  z-index: -1; /* 放在按鈕後面 */
+}
+
+/* Hover 狀態：按鈕文字略微縮放，同時泡泡從中心放大 */
+.nav-btn:hover {
+  color: var(--blue-dark);
+  transform: scale(1.1);
+}
+
+.nav-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.nav-btn:active {
+  border: none;
+  color: #FFF;
+}
+.home-btn img{
+  height: 55px;
+}
+.home-btn:hover{
+  transform: scale(1.2);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: none;
+}
+
+/* toTop */
+.progress-wrap {
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	height: 46px;
+	width: 46px;
+	cursor: pointer;
+	display: block;
+	border-radius: 50px;
+	box-shadow: inset  0 0 0 2px rgba(255,255,255,0.2);
+	z-index: 10000;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(15px);
+	-webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.progress-wrap.active-progress {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+.progress-wrap::after {
+	position: absolute;
+	content: '↑';
+	text-align: center;
+	line-height: 46px;
+	font-size: 24px;
+	color: #f593c4;
+	left: 0;
+	top: 0;
+	height: 46px;
+	width: 46px;
+	cursor: pointer;
+	display: block;
+	z-index: 1;
+	-webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.progress-wrap:hover::after {
+	opacity: 0;
+}
+.progress-wrap::before {
+	position: absolute;
+	content: '↑';
+	text-align: center;
+	line-height: 46px;
+	font-size: 24px;
+	opacity: 0;
+	background-image: linear-gradient(298deg, var(--red), var(--yellow));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	left: 0;
+	top: 0;
+	height: 46px;
+	width: 46px;
+	cursor: pointer;
+	display: block;
+	z-index: 2;
+	-webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.progress-wrap:hover::before {
+	opacity: 1;
+}
+.progress-wrap svg path { 
+	fill: none; 
+}
+.progress-wrap svg.progress-circle path {
+	stroke: #f593c4;
+	stroke-width: 5;
+	box-sizing:border-box;
+	-webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+/* 頁尾 */
+footer {
+  position: static;
+  background: var(--blue-dark);
+  padding: 20px 0;
+}
+  
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+  
+.footer-links a {
+  padding: 10px 20px 5px;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid;
+}
+  
+.footer-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  gap: 0px 10px;
+}
+  
+.footer-logo{
+  width: 100%;
+  margin: 10px 0px 10px;
+}
+
+.footer-logo img{
+  width: 100px;
+}
+
+.footer-socialmedia img{
+  width: 40px;
+}
+
+  
+/* 排版用的標籤 */
+.left-25{
+  left: 25%;
+}
+.left-50{
+  left: 55%;
+}
+.right-25{
+  right: 25%;
+} 
+.right-30{
+  right: 30%;
+}
+.flex-end{
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+.flex-start{
+  flex-wrap: wrap;
+}
+
+/* 手機版導覽列樣式 */
+@media screen and (max-width: 768px) {
+  header {
+    display: unset !important;
+    padding: 0 !important;
+  }
+  /* 隱藏桌面版導覽列 */
+  .desktop-navbar {
+    display: none;
+  }
+  /* 顯示手機版導覽列 */
+  .mobile-navbar {
+    display: flex;
+    left: 0;
+    right: 0;
+    background: transparent;
+    z-index: 999;
+    padding: 20px 0;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+  }
+  /* 手機選單內部排版 */
+  .mobile-navbar .mobile-menu ul {
+    list-style: none;
+    margin: 150px 0px;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .mobile-navbar .mobile-menu li {
+    flex: 1;
+    text-align: center;
+  }
+  .nav-btn {
+    color: #FFF;
+    font-size: 24px;
+  }
+  /* 隱藏選單內容，僅在開啟時顯示 */
+  .mobile-navbar .mobile-menu {
+    display: none;
+  }
+  /* 當手機選單開啟時 */
+  .mobile-navbar.active .mobile-menu {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    background: #0000007a;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    top: 0px;
+    left: 0;
+    position: absolute;
+    z-index: 100;
+  }
+  /* 漢堡按鈕樣式 */
+  .mobile-navbar-header {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .mobile-menu-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-menu-toggle img {
+    width: 35px;
+  }
+  .mobile-menu-toggle img:hover {
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+  }
+  .navbar-logo {
+    width: 130px;
+  }
+  .mobile-navbar-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /*頁尾樣式*/
+  footer {
+    padding: 10px 0;
+  }
+  .footer-logo img{
+    width: 60px;
+  }
+  .foter-socialmedia img{
+    width: 28px;
+  }
+}

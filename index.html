@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hachu</title>
+    <link rel="icon" href="/image/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+  </head>
+  <body class="gradient-bg scroll-container">
+    <header>
+      <div class="desktop-navbar navbar">
+        <button class="nav-btn" id="intro-page">關於 hachu</button>
+        <button class="nav-btn" id="info-page">hachu 資訊分享</button>
+        <button class="nav-btn" id="test-page">hachu測驗</button>
+        <button class="nav-btn" id="collection-page">寶貝啾收集冊</button>
+      </div>
+
+      <!-- 手機版導覽列 -->
+      <div class="mobile-navbar">
+        <div class="mobile-navbar-header">
+            <button class="mobile-menu-toggle">
+                <img src="/image/menu.png" alt="Menu" />
+            </button>
+        </div>
+        <div class="mobile-navbar-logo">
+            <img class="navbar-logo" id="index-page-mobile" src="/image/hachu_logo.png" alt="">
+        </div>
+        <nav class="mobile-menu">
+            <ul>
+                <li><button class="nav-btn" id="intro-page-mobile">關於 hachu</button></li>
+                <li><button class="nav-btn" id="info-page-mobile">hachu 資訊分享</button></li>
+                <li><button class="nav-btn" id="test-page-mobile">hachu測驗</button></li>
+                <li><button class="nav-btn" id="collection-page-mobile">寶貝啾收集冊</button></li>
+            </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main >
+      <div class="logo">
+        <img src="/image/hachu_logo.png" alt="">
+      </div>
+
+      <div class="map">
+        <canvas id="canvas"style="position: absolute; top: 0; left: 0; z-index: -1"></canvas>
+
+        <!-- First Blob -->
+        <section class="flex-end" data-scroll data-scroll-delay="0.04" data-scroll-speed="0.2">
+          <div class="blob-container bounce">
+            <div class="blob1">
+              <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                <defs>
+                  <pattern id="bgImage1" patternUnits="userSpaceOnUse" width="500" height="500">
+                    <image xlink:href="webp\blue_1.webp" x="0" y="0" width="500" height="500"/>
+                  </pattern>
+                </defs>
+                <defs>
+                  <pattern id="bgImage2" patternUnits="userSpaceOnUse" width="500" height="500">
+                    <image xlink:href="webp\pink_1.webp" x="0" y="0" width="500" height="500"/>
+                  </pattern>
+                </defs>
+                <path class="blob-path" fill="url(#bgImage2)"></path>
+              </svg>
+            </div>
+            <div class="blob2 blob-pink"></div>
+          </div>
+        </section>
+
+        <!-- Second Blob -->
+        <section class="flex-start section-2" data-scroll data-scroll-delay="0.04" data-scroll-speed="0.3">
+          <canvas class="section-canvas"></canvas>
+          <div class="blob-container bounce">
+            <div class="blob1">
+              <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                <path class="blob-path" fill="url(#bgImage1)"></path>
+              </svg>
+            </div>
+            <div class="blob2 blob-blue"></div>
+            <div class="bub-txt">
+              <p>關於 <br />hachu</p>
+            </div>
+          </div>
+          <div class="second li-container">
+            <div class="small-blob-container" id="intro-concept">
+              <div class="blob1">
+                <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                  <path class="blob-path" fill="url(#bgImage1)"></path>
+                </svg>
+              </div>
+              <div class="blob2 blob-blue"></div>
+              <h1>作品概念</h1>
+            </div>
+            <div class="small-blob-container" id="intro-group">
+              <div class="blob1">
+                <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                  <path class="blob-path" fill="url(#bgImage1)"></path>
+                </svg>
+              </div>
+              <div class="blob2 blob-blue"></div>
+              <h1>團隊介紹</h1>
+            </div>
+          </div>
+        </section>
+
+        <!-- Third Blob -->
+        <section class="flex-end section-3" data-scroll data-scroll-delay="0.04" data-scroll-speed="0.1">
+          <canvas class="section-canvas"></canvas>
+
+          <div class="blob-container bounce">
+            <div class="bub-txt">
+              <p>hachu <br />資訊分享站</p>
+            </div>
+            <div class="blob1">
+              <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                <path class="blob-path" fill="url(#bgImage2)"></path>
+              </svg>
+            </div>
+            <div class="blob2 blob-pink"></div>
+          </div>
+          <div class="third li-container">
+            <div class="small-blob-container" id="info-allergy">
+              <div class="blob1">
+                <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                  <path class="blob-path" fill="url(#bgImage2)"></path>
+                </svg>
+              </div>
+              <div class="blob2 blob-pink"></div>
+              <h1>六大過敏原</h1>
+            </div>
+            <div class="small-blob-container" id="info-how">
+              <div class="blob1">
+                <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                  <path class="blob-path" fill="url(#bgImage2)"></path>
+                </svg>
+              </div>
+              <div class="blob2 blob-pink"></div>
+              <h1>過敏是如何發生？</h1>
+            </div>
+          </div>
+        </section>
+
+        <!-- Fourth Blob -->
+        <section class="flex-start section-4" data-scroll data-scroll-speed="0.2">
+          <canvas class="section-canvas"></canvas>
+
+          <div class="blob-container bounce">
+            <div class="blob1">
+              <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                <path class="blob-path" fill="url(#bgImage1)"></path>
+              </svg>
+            </div>
+            <div class="blob2 blob-blue"></div>
+            <div class="bub-txt">
+              <p>hachu <br />測驗</p>
+            </div>
+          </div>
+          <div class="fourth li-container">
+            <div class="small-blob-container" id="test-testpg">
+              <div class="blob1">
+                <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                  <path class="blob-path" fill="url(#bgImage1)"></path>
+                </svg>
+              </div>
+              <div class="blob2 blob-blue"></div>
+              <h1>哈啾大搜集</h1>
+            </div>
+          </div>
+        </section>
+
+        <!-- Fifth Blob -->
+        <section class="flex-end" data-scroll data-scroll-speed="0.3">
+          <div class="blob-container bounce">
+            <div class="bub-txt">
+              <p>寶貝啾 <br />收集冊</p>
+            </div>
+            <div class="blob1">
+              <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
+                <path class="blob-path" fill="url(#bgImage2)"></path>
+              </svg>
+            </div>
+            <div class="blob2 blob-pink"></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+          <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-icons">
+        <div class="footer-logo">
+          <img src="/image/hachu.png" alt="">
+        </div>
+        <div class="footer-socialmedia">
+          <a href="https://www.instagram.com/hachu.2025?igsh=MXd3dTFtMzEzZ3Y2cg==" target="_blank" rel="noopener noreferrer">
+            <img src="/image/instagram.png" alt="">
+          </a>
+          <a href="https://www.threads.net/@hachu.2025?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer">
+            <img src="/image/threads.png" alt="">
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/bubbleStyle.js"></script>
+    <script src="/js/navbarControl.js"></script>
+  </body>
+</html>

@@ -1,0 +1,552 @@
+/* 全局樣式 */
+body, html {
+    margin: 0;
+    padding: 0;
+    background: #faf9f8;
+    letter-spacing: 3px;
+}
+p {
+    margin: 0;
+}
+
+/* 區塊樣式 */
+section {
+    display: none;
+    height: -webkit-calc(100vh - 30px);
+    height: calc(100vh - 30px);
+    margin: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2),
+                inset -5px -5px 15px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 40px;
+    -webkit-background-blend-mode: color;
+    background-blend-mode: color;
+    background-color: rgba(255, 255, 255, 0.65);
+    background-image: url('/image/background/main_bg.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+section.active {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+/* 背景設定 */
+.test#background {
+    background-image: url('/image/background/main_bg.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.enter {
+    -webkit-background-blend-mode: normal;
+    background-blend-mode: normal;
+    background-image: url(/image/background/mainpg_bg.png);
+}
+
+.enter-btn {
+    position: relative;
+    top: 230px;
+}
+
+/* 各內容區塊，加入 Safari 的 flex 前置詞 */
+.intro-content, .enter-content, .test-content, .finish-content, .chosen-content {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    z-index: 50;
+}
+
+/* 選項列表 */
+.ans-list1, .ans-list2, .ag-list {
+    list-style: none;
+    padding: 0;
+    margin: 50px 0;
+    display: -webkit-flex;
+    display: flex;
+    gap: 70px;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+/* 按鈕通用樣式，包含 Safari 前置詞及線性漸層的 -webkit 線性漸層 */
+button, li, .name-input {
+    width: 250px;
+    height: 80px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background: -webkit-linear-gradient(160deg, #03cbfd, #12d0ff);
+    background: linear-gradient(160deg, #03cbfd, #12d0ff);
+    border: none;
+    border-radius: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    box-shadow: inset 7px 7px 7px rgb(255 255 255 / 73%), 
+                5px 5px 15px rgba(0, 0, 0, 0.2), 
+                inset -5px -5px 10px rgb(98 91 91 / 42%);
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+/* 按鈕懸停效果 */
+button:hover, li:hover {
+    background: -webkit-linear-gradient(160deg, #12d0ff, #03cbfd);
+    background: linear-gradient(160deg, #12d0ff, #03cbfd);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2),
+                inset 3px 3px 6px rgba(255, 255, 255, 0.5);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+/* 按鈕按下效果 */
+button:active, li:active {
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.5);
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+    background: #72C3D2;
+}
+
+.intro-btn {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.intro-btn button {
+    margin: 15px;
+}
+
+.ans-list1 li.selected {
+    background: -webkit-linear-gradient(160deg, #ff1298, #ff3fc2);
+    background: linear-gradient(160deg, #ff1298, #ff3fc2);
+}
+.ans-list1 li.answer {
+    background: #ccff00;
+}
+.ans-list1 li.answer.selected {
+    background: #ccff00;
+}
+
+/* 文字設定 */
+.highlight-text {
+    color: #F552AB;
+    font-weight: bold;
+}
+.title, .intro-txt p, .chosen-txt, .name-txt {
+    font-weight: bolder;
+    font-size: 40px;
+    text-align: center;
+    color: #023c49;
+    margin: 15px 0;
+}
+.chosen-txt p {
+    letter-spacing: 10px;
+    color: #ff3aa5;
+    font-size: 67px;
+    text-shadow: 2px 3px 2px #70003ca3;
+}
+.chosen-txt p::before {
+    content: attr(data-storke);
+    position: absolute;
+    z-index: -1;
+}
+.name-txt {
+    margin: 45px 0;
+}
+.current-question, .question {
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.question-container {
+    position: relative;
+}
+.question {
+    position: absolute;
+}
+.question-stroke {
+    position: relative;
+}
+.question-stroke, .num-stroke {
+    z-index: -1;
+    -webkit-text-stroke: 10px #029de2;
+    text-shadow: 3px 3px 15px rgba(76, 76, 76, 0.62);
+}
+
+/* 選擇過敏模型 */
+.ag-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 50px;
+    justify-content: center;
+}
+.allergen {
+    text-align: center;
+    padding: 15px;
+    background: #03cbfd;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 100px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.allergen.selected {
+    background: #ccff00;
+}
+.allergen:hover {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: inset 7px 7px 7px rgb(255 255 255 / 73%), 
+                5px 5px 15px rgba(0, 0, 0, 0.2), 
+                inset -5px -5px 10px rgb(98 91 91 / 42%);
+}
+#confirm-selection {
+    padding: 10px 30px;
+    font-size: 28px;
+    background: #ff3aa5;
+    border: none;
+    border-radius: 100px;
+    color: white;
+    cursor: pointer;
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+}
+#confirm-selection:hover {
+    background-color: #C13452;
+}
+
+/* 輸入名稱 */
+.name-btn {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    gap: 30px;
+}
+.confirm-name {
+    width: 25%;
+    font-size: 28px;
+}
+.name-input::placeholder {
+    color: #eef4f7;
+    font-size: 28px;
+    text-align: center;
+}
+.name-input {
+    width: 65%;
+    text-align: center;
+    box-shadow: 4px 4px 6px 0 rgb(255 255 255 / 86%), 
+                -4px -4px 13px 0 rgba(116, 125, 136, .5), 
+                inset -4px -4px 6px 0 rgba(255, 255, 255, .2), 
+                inset 4px 4px 14px 3px rgb(0 0 0 / 29%);
+}
+.name-input:focus {
+    outline: 2px solid #ffffffdb;
+    outline-offset: -7px;
+}
+.name-input:focus::-webkit-input-placeholder {
+    color: #dee4e7c6;
+}
+
+/* 結束按鈕 */
+.hint-btn {
+    width: auto;
+    height: 10%;
+    font-size: 50px;
+    padding: 10px 30px;
+    border-radius: 50%;
+}
+
+/* 進度條 */
+.progress-bar-container {
+    width: 50%;
+    background-color: #D9D9D9;
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #ccff00;
+    border-radius: 5px;
+    -webkit-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+}
+
+.generate-image {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin: 20px;
+    width: 280px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*** 測驗背景元素動畫 ***/
+.test-bg-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    right: 200px;
+    top: 550px;
+}
+@-webkit-keyframes sweep {
+    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+    50% { -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }
+    100% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+}
+@keyframes sweep {
+    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+    50% { -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }
+    100% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+}
+.sweep-animation {
+    -webkit-animation: sweep 1s infinite alternate ease-in-out;
+    animation: sweep 1s infinite alternate ease-in-out;
+}
+
+/*** 響應式設計 **/
+/* iPad Pro 調整 */
+@media screen and (max-width: 1366px) {
+    .intro, .chooseModal {
+        background-image: url(/image/background/main-tablet_bg.png) !important;
+    }
+    .enter {
+        -webkit-background-blend-mode: normal;
+        background-blend-mode: normal;
+        background-image: url(/image/background/mainpg-tablet_bg.png);
+    }
+    .enter-btn {
+        position: relative;
+        top: 195px;
+    }
+    .intro-txt p {
+        font-size: 38px;
+    }
+    .title {
+        font-size: 50px;
+    }
+    .ag-list {
+        gap: 40px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .allergen {
+        width: 220px;
+        height: 70px;
+        font-size: 30px;
+    }
+    .intro-btn button {
+        margin: 20px;
+    }
+    .progress-bar-container {
+        width: 60%;
+    }
+    .test-bg-container {
+        right: 180px;
+        top: 520px;
+        width: 90px;
+        height: 90px;
+    }
+    .question-stroke, .num-stroke {
+        -webkit-text-stroke: 6px #029de2;
+        text-shadow: none; /* 陰影更柔和 */
+    }
+}
+
+/* 平板（含 iPad Air 預設屬性） */
+@media screen and (max-width: 1024px) {
+    .title {
+        font-size: 45px;
+    }
+    .intro-txt p {
+        font-size: 32px;
+    }
+    .ag-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .allergen {
+        width: 200px;
+        height: 60px;
+    }
+    .intro-btn button {
+        margin: 15px;
+    }
+    .progress-bar-container {
+        width: 70%;
+    }
+    .test-bg-container {
+        right: 140px;
+        top: 500px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .question-stroke, .num-stroke {
+        -webkit-text-stroke: 6px #029de2;
+        text-shadow: none; /* 陰影更柔和 */
+    }
+}
+
+/* 手機 */
+@media screen and (max-width: 768px) {
+    section {
+        height: 100vh;
+        margin: 0;
+    }
+    .intro-content {
+        gap: 30px;
+        width: 80%;
+    }
+    .intro-txt p {
+        font-size: 15px;
+    }
+    .intro-btn {
+        flex-direction: column;
+    }
+    .test-btn {
+        width: 80%;
+    }
+    .question {
+        position: unset;
+        text-shadow: -1px -1px 0 #029de2, 1px -1px 0 #029de2, -1px 1px 0 #029de2, 1px 1px 0 #029de2;
+    }
+    .question-stroke {
+        display: none;
+    }
+    .num-stroke {
+        -webkit-text-stroke: 2px #029de2;
+    }
+    .ans-list1, .ans-list2, .ag-list {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        margin: 20px 0;
+    }
+    .ag-list li {
+        height: 25px;
+        width: 100%;
+        font-size: 25px;   
+    }
+    .ans-list1 li, .ans-list2 li {
+
+        height: 50px;
+        width: 100%;
+    }
+    .question-stroke, .num-stroke {
+        -webkit-text-stroke: 6px #029de2;
+        /* text-shadow: 3px 3px 3px rgb(0 0 0 / 62%); */
+    }
+    .ag-list {
+        margin: 40px 0;
+        grid-template-columns: 1fr;
+    }
+    .progress-bar-container {
+        width: 90%;
+    }
+    .test-bg-container {
+        right: 80px;
+        top: 400px;
+        width: 60px;
+        height: 60px;
+    }
+    .title, .name-txt, .question {
+        font-size: 25px;
+    }
+    .name-content {
+        letter-spacing: 1px;
+        width: 95%;
+    }
+    .chosen-txt {
+        margin: 0;
+    }
+    .chosen-txt p {
+        font-size: 45px;
+    }
+    button, li, .name-input {
+        width: 200px;
+        height: 60px;
+        font-size: 20px;
+    }
+    .name-btn {
+        flex-direction: column;
+        align-items: center;
+    }
+    .name-input {
+        width: 70%;
+        font-size: 25px;
+    }
+    .name-input::placeholder {
+        font-size: 20px;
+    }
+    .confirm-name {
+        width: 30%;
+        font-size: 20px;
+    }
+}
+
+/* iPad Air 專屬調整（根據裝置方向區分） */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    .title {
+        font-size: 42px;
+    }
+    .intro-txt p {
+        font-size: 36px;
+    }
+    button, li, .name-input {
+        width: 230px;
+        height: 70px;
+        font-size: 30px;
+    }
+    .enter-btn {
+        top: 220px;
+    }
+    .question-stroke, .num-stroke {
+        -webkit-text-stroke: 6px #029de2;
+        text-shadow: none; /* 陰影更柔和 */
+    }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    .title {
+        font-size: 38px;
+    }
+    .intro-txt p {
+        font-size: 34px;
+    }
+    button, li, .name-input {
+        width: 240px;
+        height: 75px;
+    }
+    .enter-btn {
+        top: 230px;
+    }
+}

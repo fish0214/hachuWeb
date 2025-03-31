@@ -1,0 +1,203 @@
+body{
+    width: -webkit-fill-available;
+}
+header{
+    display: flex;
+    padding: 0 100px;
+    flex-direction: column;
+    align-items: center;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    display: flex;
+    height: 460px;
+    width: 460px;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+.title h1{
+    color: var(--text-blue);
+    text-align: center;
+    font-size: 48px;
+    position: absolute;
+}
+
+
+/* 搜尋框 */
+.search {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin: 20px auto;
+    text-align: center;
+}
+.search input {
+    padding: 20px;
+    width: 340px;
+    border: 0px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;   
+    text-align: center;
+    box-shadow: 
+        4px 4px 6px 0 rgb(255 255 255 / 86%),
+        -4px -4px 7px 1px rgb(116 125 136 / 19%), 
+        inset -4px -4px 6px 0 rgba(255, 255, 255, .2), 
+        inset 4px 4px 16px 2px rgb(0 0 0 / 27%);
+}
+.search input:focus {
+    outline: none;
+    border-color: #3a5e77;
+    border: 2px solid #3a5e77;
+}
+.search input::placeholder {
+    font-size: 16px;
+    color: #ddd;
+}
+.search-btn {
+    padding: 20px;
+    background: linear-gradient(160deg, #3a5e77, #425c6f);
+    border: none;
+    font-size: 16px;
+    color: white;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 
+        inset 7px 7px 7px rgb(255 255 255 / 50%), 
+        5px 5px 15px rgba(0, 0, 0, 0.2), 
+        inset -5px -5px 10px rgb(79 73 73 / 42%);
+}
+.search-btn:hover {
+    background: linear-gradient(160deg, #ffe682, #f8e598);
+    transition: background-color 0.2s ease;
+}
+
+/* 卡片區塊 */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 100px;
+    justify-items: center;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.card-img {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 506px;
+    width: 316px;
+}
+.card-img:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+.card-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.card-title {
+    margin-top: 20px;
+    font-size: 25px;
+    color: #52879c;
+}
+
+/* 分頁控制區 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 0px 0px 50px 0;
+}
+
+.pagination button {
+    color: #3a5e77;
+    background-color: #f0f0f000;
+    border: none;
+    border-radius: 50px;
+    padding: 7px 13px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pagination button.current {
+    background-color: #ffd83b;
+    color: #fff;
+    font-weight: bold;
+    cursor: default;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+
+/** 響應式設計 **/
+@media screen and (max-width: 768px) {
+    main {
+        min-height: 70vh;
+    }
+    .title {
+        display: none !important;
+    }
+    .search-btn {
+        display: none !important;
+    }
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr) !important;  /* 每行2個卡片 */
+        padding:  100px 20px !important;
+    }
+    .card-img {
+        height: 253px !important;
+        width: 158px !important;
+    }
+    .card-title {
+        font-size: 20px !important;
+    }
+    .pagination {
+        margin: 40px 0px 20px 0 !important;
+    }
+    .pagination button {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-input {
+        width: 260px !important;
+        margin: 20px;
+    }
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr) !important; /* 每行2個卡片 */
+        padding: 20px 20px !important;
+    }
+    .card-img {
+        height: 253px;
+        width: 158px;
+    }
+    .card-title {
+        font-size: 20px;
+    }
+    .pagination {
+        margin: 40px 0px 20px 0 ;
+    }
+    .pagination button {
+        font-size: 16px;
+    }
+}

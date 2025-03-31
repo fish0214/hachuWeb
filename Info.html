@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hachu</title>
+    <link rel="icon" href="/image/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/infopage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+</head>
+<body class="gradient-bg scroll-container">
+    <header>
+        <div class="desktop-navbar navbar">
+            <button class="nav-btn" id="intro-page">關於 hachu</button>
+            <button class="nav-btn" id="info-page">hachu 資訊分享</button>
+            <button class="home-btn" id="index-page">
+                <img src="/image/hachu_logo.png" alt="">
+            </button>
+            <button class="nav-btn" id="test-page">hachu測驗</button>
+            <button class="nav-btn" id="collection-page">寶貝啾收集冊</button>
+        </div>
+        <!-- 手機版導覽列 -->
+        <div class="mobile-navbar">
+            <div class="mobile-navbar-header">
+                <button class="mobile-menu-toggle">
+                    <img src="/image/menu.png" alt="Menu" />
+                </button>
+            </div>
+            <div class="mobile-navbar-logo">
+                <img class="navbar-logo" id="index-page-mobile" src="/image/hachu_logo.png" alt="">
+            </div>
+            <nav class="mobile-menu">
+                <ul>
+                    <li><button class="nav-btn" id="intro-page-mobile">關於 hachu</button></li>
+                    <li><button class="nav-btn" id="info-page-mobile">hachu 資訊分享</button></li>
+                    <li><button class="nav-btn" id="test-page-mobile">hachu測驗</button></li>
+                    <li><button class="nav-btn" id="collection-page-mobile">寶貝啾收集冊</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro" id="allergy">
+            展覽過敏原介紹
+        </section>
+        <section class="intro-dust">
+            <div class="introimg-container">
+                <img src="/image/allergens/allergen_dust.png" alt="" class="bubble1">
+                <div class="infobtn-container">
+                    <button class="info-btn info-green-btn" type="button" data-allergen="dust1">關於我</button>
+                    <button class="info-btn info-pink-btn" type="button" data-allergen="dust2">如何避免</button>
+                </div>
+            </div>
+            <div class="introtxt-container">
+                <div class="card">
+                    <div class="card-front">
+                        <h1 class="txt-header txt-dust txt-main">塵蟎</h1>
+                        <h1 class="txt-header txt-dust txt-stroke">塵蟎</h1>
+                    </div>
+                    <div class="card-back">
+                        <h1>霧米</h1>
+                        <p>家裡明明打掃得超乾淨，為什麼還是狂打噴嚏？<br>這就是我的厲害之處！我無所不在，床單、地毯、沙發、空調濾網裡都有我的蹤跡，隨時準備偷襲你的鼻子！</p>
+                    </div>
+                </div>
+            </div>
+            <div class="info-content" id="dust-info"></div>
+        </section>
+        <section class="intro-food">
+            <div class="introtxt-container">
+                <div class="card">
+                    <div class="card-front">
+                        <h1 class="txt-header txt-food txt-main">食物</h1>
+                        <h1 class="txt-header txt-food txt-stroke">食物</h1>
+                    </div>
+                    <div class="card-back">
+                        <h1>脆脆</h1>
+                        <p>過敏最讓人害怕的就是食物過敏，因為它可能會引發嚴重的過敏反應，甚至危及生命！<br> 而我——花生，就是最具代表性的過敏原之一。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="introimg-container">
+                <img src="/image/allergens/allergen_peanut.png" alt="">
+                <div class="infobtn-container">
+                    <button class="info-btn info-green-btn" type="button" data-allergen="food1">關於我</button>
+                    <button class="info-btn info-pink-btn" type="button" data-allergen="food2">如何避免</button>
+                </div>
+            </div>
+            <div class="info-content" id="food-info"></div>
+        </section>
+        <section class="intro-pollen">
+            <div class="introimg-container">
+                <img src="/image/allergens/allergen_flower.png" alt="">
+                <div class="infobtn-container">
+                    <button class="info-btn info-green-btn" type="button" data-allergen="pollen1">關於我</button>
+                    <button class="info-btn info-pink-btn" type="button" data-allergen="pollen2">如何避免</button>
+                </div>
+            </div>
+            <div class="introtxt-container">
+                <div class="card">
+                    <div class="card-front">
+                        <h1 class="txt-header txt-pollen txt-main">花粉<br>（季節性過敏）</h1>
+                        <h1 class="txt-header txt-pollen txt-stroke">花粉<br>（季節性過敏）</h1>
+                    </div>
+                    <div class="card-back">
+                        <h1>朵蕊咪</h1>
+                        <p>春天是我的主場！<br> 當花開時，我就會隨風飛舞，讓過敏族群的鼻子變成水龍頭，眼睛紅腫得像兔子一樣。 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="info-content" id="pollen-info"></div>
+        </section>
+        <section class="intro-hair">
+            <div class="introtxt-container">
+                <div class="card">
+                    <div class="card-front">
+                        <h1 class="txt-header txt-animal txt-main">動物毛髮</h1>
+                        <h1 class="txt-header txt-animal txt-stroke">動物毛髮</h1>
+                    </div>
+                    <div class="card-back">
+                        <h1>喵酷</h1>
+                        <p>你是不是對某些動物的毛髮超級敏感？<br>
+                            那可能是因為我——喵酷，在空氣中散播細小的皮屑和蛋白質顆粒，讓你的免疫系統誤以為我是壞人，結果開始大戰一場——打噴嚏、鼻塞、眼睛癢得不得了。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="introimg-container">
+                <img src="/image/allergens/allergen_cat.png" alt="">
+                <div class="infobtn-container">
+                    <button class="info-btn info-green-btn" type="button" data-allergen="animal1">關於我</button>
+                    <button class="info-btn info-pink-btn" type="button" data-allergen="animal2">如何避免</button>
+                </div>
+            </div>
+            <div class="info-content" id="animal-info"></div>
+        </section>
+        <section class="intro-metal">
+            <div class="introimg-container">
+                <img src="/image/allergens/allergen_mental.png" alt="">
+                <div class="infobtn-container">
+                    <button class="info-btn info-green-btn" type="button" data-allergen="metal1">關於我</button>
+                    <button class="info-btn info-pink-btn" type="button" data-allergen="metal2">如何避免</button>
+                </div>
+            </div>
+            <div class="introtxt-container">
+                <div class="card">
+                    <div class="card-front">
+                        <h1 class=" txt-header txt-metal txt-main">金屬</h1>
+                        <h1 class=" txt-header txt-metal txt-stroke">金屬</h1>
+                    </div>
+                    <div class="card-back">
+                        <h1>銀吉</h1>
+                        <p>你有沒有戴某些飾品後，皮膚開始發紅、發癢，甚至起紅疹？那就是我的魔力！
+                            我潛伏在耳環、戒指、眼鏡、手錶、甚至牛仔褲扣子裡，隨時準備讓你的皮膚來場大爆發！</p>
+                    </div>
+                </div>
+            </div>
+            <div class="info-content" id="metal-info"></div>
+        </section>
+        <section class="intro-drug">
+            <div class="introtxt-container">
+                <div class="card">
+                    <div class="card-front">
+                        <h1 class="txt-header txt-drug txt-main">藥物</h1>
+                        <h1 class="txt-header txt-drug txt-stroke">藥物</h1>
+                    </div>
+                    <div class="card-back">
+                        <h1>咕丸</h1>
+                        <p>藥物過敏就像隱藏版陷阱，而且比食物過敏還要更危險！
+                            因為我不像食物過敏那麼易於發覺，很多人甚至完全不知道自己對某種藥物過敏。
+                            </p>
+                    </div>
+                </div>
+            </div>
+            <div class="introimg-container">
+                <img src="/image/allergens/allergen_pill.png" alt="">
+                <div class="infobtn-container">
+                    <button class="info-btn info-green-btn" type="button" data-allergen="drug1">關於我</button>
+                    <button class="info-btn info-pink-btn" type="button" data-allergen="drug2">如何避免</button>
+                </div>
+            </div>
+            <div class="info-content" id="drug-info"></div>
+        </section>
+
+        <div class="progress-wrap">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+              <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            </svg>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-icons">
+            <div class="footer-logo">
+            <img src="/image/hachu.png" alt="">
+            </div>
+            <div class="footer-socialmedia">
+            <a href="https://www.instagram.com/hachu.2025?igsh=MXd3dTFtMzEzZ3Y2cg==" target="_blank" rel="noopener noreferrer">
+                <img src="/image/instagram.png" alt="">
+            </a>
+            <a href="https://www.threads.net/@hachu.2025?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer">
+                <img src="/image/threads.png" alt="">
+            </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="/js/smoothScroll.js"></script>
+    <script src="/js/navbarControl.js"></script>
+    <script src="/js/infoCardAnimation.js"></script>
+</body>
+</html>

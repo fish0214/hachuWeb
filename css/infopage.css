@@ -1,0 +1,301 @@
+header{
+    display: flex;
+    padding: 0 100px;
+    flex-direction: column;
+    align-items: center;
+    height: 10vh;
+}
+.intro {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: HeaderFont;
+  font-size: 120px;
+  font-weight: bolder;
+  line-height: 50vh;
+  text-align: center;
+  color: transparent;
+  background-image: linear-gradient(45deg, #d3fa5f, #56dffd 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  letter-spacing: 20px;
+}
+.intro-dust, .intro-food, .intro-pollen, .intro-hair, .intro-metal, .intro-drug {
+  margin: 100px 50px;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+.introimg-container, .introtxt-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.introimg-container img {
+  height: 380px;
+  margin-block-end: 70px;
+}
+
+
+/* 過敏原介紹文字區塊 */
+.introtxt-container {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.card {
+  width: 600px;
+  height: 500px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+/* 正面卡片 */
+.card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+  backface-visibility: hidden;
+  border-radius: 40px;
+}
+/* 背面卡片 */
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: transparent;
+  backface-visibility: hidden;
+  transform: rotateX(180deg);
+  border-radius: 40px;
+  flex-direction: column;
+  text-align: left;
+}
+.card-back h1 {
+  font-family: HeaderFont;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin: 0;
+  font-size: 50px;
+  color: var(--text-pink-dark);
+  letter-spacing: 10px;
+}
+.card-back p {
+  height: 80%;
+  padding: 20px;
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 2px;
+  line-height: 2;
+  color: var(--text-pink-dark);
+}
+.introtxt-container:hover .card {
+  -webkit-transform: rotateX(20deg);
+  transform: rotateX(20deg);
+  box-shadow: 0 20px 20px rgba(50,50,50,.2);
+}
+.card.flipped{
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
+.card.flipped:hover{
+  -webkit-transform: rotateX(160deg);
+  transform: rotateX(160deg);
+  box-shadow: 0 20px 20px rgba(255,255,255,.2);
+}
+.txt-main {
+  z-index: 10;
+}
+.txt-stroke {
+  position: absolute;
+  -webkit-text-stroke: 10px #FFF;
+  text-shadow: 3px 3px 15px rgb(0 0 0 / 62%);
+}
+.txt-header {
+  font-family: 'HeaderFont';
+  font-size: 60px;
+  letter-spacing: 15px;
+  color: #454644;
+}
+
+/* 過敏原資訊 */
+.infobtn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.info-btn {
+  height: 55px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 50px;
+  color: #FFF;
+  font-size: 25px;
+  box-shadow: inset 7px 7px 7px rgb(255 255 255 / 73%), 5px 5px 15px rgba(0, 0, 0, 0.2), inset -5px -5px 10px rgb(98 91 91 / 42%);
+  cursor: pointer;
+}
+.info-btn:hover {
+  transform: scale(1.1);
+  box-shadow: inset 7px 7px 7px rgb(255 255 255 / 73%), 
+  5px 5px 15px rgba(0, 0, 0, 0.2), 
+  inset -5px -5px 10px rgb(98 91 91 / 42%),
+  -5px -5px 10px rgba(255,255,255,.2);
+}
+.info-green-btn {
+  background-color: #b7f500;
+}
+.info-pink-btn {
+  background-color: #fe00ba;
+}
+
+/* 顯示過敏原詳細內容 */
+.info-content {
+  width: 60%;
+  padding: 40px;
+  background-color: #ffffff9c;
+  border-radius: 30px;
+  margin: 80px 0;
+  display: none;
+  color: #969696;
+  box-shadow: inset 7px 7px 7px rgb(255 255 255 / 73%), 
+  5px 5px 15px rgba(0, 0, 0, 0.2), 
+  inset -5px -5px 10px rgb(98 91 91 / 42%),
+  -5px -5px 10px rgba(255,255,255,.2);
+}
+.info-content.active {
+  display: block;
+}
+.info-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.info-content h2 {
+  color: #e3556e;
+  font-size: 28px;
+}
+.info-content p, .info-content li {
+  font-size: 18px;
+  line-height: 2;
+  color: #454644;
+}
+
+/** 響應式設計 **/
+/* 手機 */
+@media (max-width: 768px) {
+  /* Header 調整，讓 logo 與導航按鈕適應小屏幕 */
+  header {
+    padding: 20px 15px;
+  }
+
+  .title {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .title h1 {
+    font-size: 30px;
+  }
+
+  .intro {
+    font-size: 50px;
+    line-height: 40vh;
+    letter-spacing: 10px;
+  }
+
+  .introimg-container,
+  .introtxt-container {
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    height: 300px;
+  }
+
+  .card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .txt-header {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .intro-dust,
+  .intro-food,
+  .intro-pollen,
+  .intro-hair,
+  .intro-metal,
+  .intro-drug {
+    margin: 0 20px;
+    height: 100vh;
+  }
+
+  .introimg-container img {
+    height: 200px;
+  }
+
+  .desktop-navbar {
+    display: none;
+  }
+
+  /* 顯示手機版導航列 */
+  .mobile-navbar {
+    display: block;
+  }
+  .nav-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  .mobile-menu {
+    display: block;
+  }
+}
+
+/* 平板 */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .intro {
+    font-size: 80px;
+  }
+
+  .title h1 {
+    font-size: 40px;
+  }
+
+  .introimg-container img {
+    width: 70%;
+    height: auto;
+  }
+
+  .card {
+    width: 80%;
+    height: 400px;
+  }
+}

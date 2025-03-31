@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-tw">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hachu Test Web</title>
+    <link rel="icon" href="/image/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/testpage.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div>
+        <section class="enter active">
+            <div class="enter-content">
+                <div>
+                    <button class="enter-btn">START</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="intro">
+            <div class="intro-content">
+                <div class="intro-txt">
+                    <p>歡迎來到 <span class="highlight-text">hachu</span>檢測站</p> 
+                    <p>對花粉打噴嚏，對貓毛癢癢，還是某些食物讓你不舒服？</p>
+                    <p>每個人都有自己的小敏感，那你呢？</p>
+                    <p>現在就來檢測，看看你的身體有哪些『小雷區』！</p>
+                </div>
+                <div class="intro-btn">
+                    <button class="btn-allergy">有過敏史</button>
+                    <button class="btn-noallergy">無過敏史</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="chooseModal">
+            <div class="chosen-content">
+                <div class="chosen-txt">
+                    <p data-storke="選擇過敏原">選擇過敏原</p>
+                </div>
+                <div class="">
+                    <ul class="ag-list">
+                        <li class="allergen" data-type="dust" >塵蟎</li>
+                        <li class="allergen" data-type="pollen" >花粉</li>
+                        <li class="allergen" data-type="drug" >藥物</li>
+                        <li class="allergen" data-type="food" >食物</li>
+                        <li class="allergen" data-type="metal" >金屬</li>
+                        <li class="allergen" data-type="animal" >動物毛髮</li>
+                    </ul>
+                </div>
+                <button class="confirm-selection" id="confirm-selection">確認選擇</button>
+            </div>
+        </section>
+
+        <section class="test" id="background">
+            <div class="test-bg-container" id="background-element"></div>
+            <div class="test-content">
+                <div class="test-num">
+                    <p class="current-question" style="position: absolute; text-shadow: none;">Q1</p> 
+                    <p class="current-question num-stroke" style="text-shadow: none;">Q1</p> 
+                </div>
+
+                <div class="question-container">
+                    <div class="question" data-stroke style="text-shadow: none;"></div>
+                    <div class="question question-stroke" data-stroke  style="text-shadow: none;"></div>    
+                </div>
+
+                <div class="test-btn">
+                    <ul class="ans-list1"></ul>
+                    <ul class="ans-list2"></ul>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="name">
+            <div class="name-content">
+                <div class="name-txt">
+                    <p>
+                        請告訴我你的 
+                        <span class="highlight-text">名字</span>/
+                        <span class="highlight-text">綽號</span>，
+                        <br>讓我們好好記住你吧！
+                    </p>
+                </div>
+                <div class="name-btn">
+                    <input class="name-input" id="userName" placeholder="請輸入名稱" maxlength="7"></input>
+                    <button class="confirm-name">確認</button>
+                    <span id="nameError" style="color:red; display:none;">此名稱已存在，請更換名稱！</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/js/test.js"></script>
+    <script src="/js/testDB.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+</html>
