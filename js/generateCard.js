@@ -195,7 +195,7 @@ function saveUserData(quizResults, cardUrl) {
     console.log("儲存資訊：", userCardData);
     
 
-    fetch("index.php", {
+    fetch("saveTestResult.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userCardData)
