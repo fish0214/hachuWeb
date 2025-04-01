@@ -1,8 +1,8 @@
 <?php
-$host = 'db'; 
-$dbuser = 'user';
-$dbpassword = 'password';
-$dbname = 'hachudb';
+$host = getenv('DB_HOST') ?: 'db';
+$dbuser = getenv('DB_USER') ?: 'user';
+$dbpassword = getenv('DB_PASSWORD') ?: 'password';
+$dbname = getenv('DB_NAME') ?: 'hachudb';
 
 try {
     // 連線到資料庫
@@ -39,7 +39,8 @@ try {
 
     echo json_encode(['message' => 'Data saved successfully']);
 } catch (Exception $e) {
+    error_log($e->getMessage()); // 將錯誤紀錄到 log 中
     http_response_code(500);
-    echo json_encode(['message' => 'Database error', 'error' => $e->getMessage()]);
+    echo json_encode(['message' => 'Database error']);
 }
 ?>
