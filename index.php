@@ -6,7 +6,7 @@ $dbname = getenv('DB_NAME') ?: 'hachudb';
 
 try {
     // 連線到資料庫
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbuser, $dbpassword);
+    $pdo = new PDO("pgsql:host=$host;port=5432;dbname=$dbname", $dbuser, $dbpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // 獲取前端發送的數據
