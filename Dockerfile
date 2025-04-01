@@ -10,6 +10,10 @@ COPY . /var/www/html/
 # 設定 Apache 權限
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
+    
+# 設定 Apache 首頁只為 index.html
+RUN echo "<IfModule dir_module>\nDirectoryIndex index.html\n</IfModule>" > /etc/apache2/conf-available/directoryindex.conf \
+    && a2enconf directoryindex
 
 # 啟動 Apache
 CMD ["apache2-foreground"]
