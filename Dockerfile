@@ -1,7 +1,8 @@
 FROM php:8.2-apache
 
-# 安裝 PostgreSQL 擴展
-RUN docker-php-ext-install pdo_pgsql
+# 安裝系統套件與 PostgreSQL 擴展
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo_pgsql
 
 # 複製你的 PHP 檔案到容器內
 COPY . /var/www/html/
