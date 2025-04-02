@@ -218,55 +218,80 @@ header{
     font-size: 30px;
   }
 
+  .introimg-container img {
+    height: 145px;
+    margin-block-end: 20px;
+  }
+  .intro-dust, .intro-food, .intro-pollen, .intro-hair, .intro-metal, .intro-drug {
+    margin: 0 20px;
+    height: 100vh;
+    align-content: center;
+  }
   .intro {
-    font-size: 50px;
-    line-height: 40vh;
+    font-size: 70px;
+    line-height: 15vh;
     letter-spacing: 10px;
   }
 
   .introimg-container,
   .introtxt-container {
-    width: 90%;
+    width: 50%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+  .infobtn-container {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .info-btn {
+    height: 35px;
+    width: 60%;
+    font-size: 16px;
+    padding: 10px;
+  }
 
+  /* 介紹卡片 */
+  .txt-header {
+    font-size: 40px;
+    text-align: center;
+  }
   .card {
     width: 100%;
     height: 300px;
   }
-
   .card-front {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
-  .txt-header {
-    font-size: 40px;
-    text-align: center;
+  .card-back h1 {
+    font-size: 28px;
+    padding: 10px;
+  }
+  .card-back p {
+    font-size: 14px;
+    padding: 10px;
   }
 
-  .intro-dust,
-  .intro-food,
-  .intro-pollen,
-  .intro-hair,
-  .intro-metal,
-  .intro-drug {
-    margin: 0 20px;
-    height: 100vh;
+  /* 顯示資訊區塊 */
+  .info-content {
+    margin: 40px 0;
+    padding: 15px 25px;
+    width: 70%;
+  }
+  .info-content h2 {
+    font-size: 20px;
+  }
+  .info-content p, .info-content li {
+    font-size: 16px;
   }
 
-  .introimg-container img {
-    height: 200px;
-  }
 
+  /* 顯示手機版導航列 */
   .desktop-navbar {
     display: none;
   }
-
-  /* 顯示手機版導航列 */
   .mobile-navbar {
     display: block;
   }

@@ -11,6 +11,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .title{
     display: flex;
@@ -151,7 +152,7 @@ main{
 /** 響應式設計 **/
 @media screen and (max-width: 768px) {
     main {
-        min-height: 70vh;
+        min-height: 90vh;
     }
     .title {
         display: none !important;

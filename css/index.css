@@ -264,18 +264,18 @@ body.transitioning {
     left: 15px;
   }
   .section-2 .small-blob-container:nth-child(1) {
-    left: 100px;
+    left: 155px;
   }
   .section-2 .small-blob-container:nth-child(2) {
-    left: 40px;
-    top: 40px;
+    left: -20px;
+    top: -150px;
   }
   .section-3 .small-blob-container:nth-child(1) {
-    right: 120px;
+    right: 140px;
   }
   .section-3 .small-blob-container:nth-child(2) {
-    right: 40px;
-    top: 40px;
+    right: -50px;
+    top: -100px;
   }
   .section-4 .small-blob-container {
     left: 50px;
