@@ -283,7 +283,7 @@ p {
 @media screen and (max-width: 768px) {
     .finish-content {
         background-image: url(/image/background/main-phone_bg.png);
-        height: 85vh;
+        height: 80vh;
     }
     .intro-txt p {
         font-size: 25px;

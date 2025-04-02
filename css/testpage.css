@@ -414,7 +414,7 @@ button:active, li:active {
 /* 手機 */
 @media screen and (max-width: 768px) {
     section {
-        height: 85vh;
+        height: 80vh;
         margin: 15px;
     }
     .enter {
