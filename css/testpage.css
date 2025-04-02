@@ -146,7 +146,7 @@ button:active, li:active {
     color: #F552AB;
     font-weight: bold;
 }
-.title, .intro-txt p, .chosen-txt, .name-txt {
+.intro-txt p, .chosen-txt, .name-txt {
     font-weight: bolder;
     font-size: 40px;
     text-align: center;
@@ -339,7 +339,7 @@ button:active, li:active {
 /* iPad Pro 調整 */
 @media screen and (max-width: 1366px) {
     .intro, .chooseModal {
-        background-image: url(/image/background/main-tablet_bg.png) !important;
+        background-image: url(/image/background/main-tablet_bg.png);
     }
     .enter {
         -webkit-background-blend-mode: normal;
@@ -352,9 +352,6 @@ button:active, li:active {
     }
     .intro-txt p {
         font-size: 38px;
-    }
-    .title {
-        font-size: 50px;
     }
     .ag-list {
         gap: 40px;
@@ -385,9 +382,6 @@ button:active, li:active {
 
 /* 平板（含 iPad Air 預設屬性） */
 @media screen and (max-width: 1024px) {
-    .title {
-        font-size: 45px;
-    }
     .intro-txt p {
         font-size: 32px;
     }
@@ -420,71 +414,43 @@ button:active, li:active {
 /* 手機 */
 @media screen and (max-width: 768px) {
     section {
-        height: 100vh;
-        margin: 0;
+        height: 95vh;
+        margin: 10px;
+    }
+    .enter {
+        margin: 10px;
+        background-image: url(/image/background/mainpg-phone_bg.png);
+    }
+    .intro, .chooseModal, .name {
+        margin: 10px;
+        background-image: url(/image/background/main-phone_bg.png);
     }
     .intro-content {
         gap: 30px;
         width: 80%;
     }
     .intro-txt p {
-        font-size: 15px;
+        font-size: 20px;
     }
     .intro-btn {
         flex-direction: column;
     }
-    .test-btn {
-        width: 80%;
-    }
-    .question {
-        position: unset;
-        text-shadow: -1px -1px 0 #029de2, 1px -1px 0 #029de2, -1px 1px 0 #029de2, 1px 1px 0 #029de2;
-    }
-    .question-stroke {
-        display: none;
-    }
-    .num-stroke {
-        -webkit-text-stroke: 2px #029de2;
-    }
-    .ans-list1, .ans-list2, .ag-list {
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-        margin: 20px 0;
-    }
-    .ag-list li {
-        height: 25px;
-        width: 100%;
-        font-size: 25px;   
-    }
-    .ans-list1 li, .ans-list2 li {
 
-        height: 50px;
-        width: 100%;
-    }
-    .question-stroke, .num-stroke {
-        -webkit-text-stroke: 6px #029de2;
-        /* text-shadow: 3px 3px 3px rgb(0 0 0 / 62%); */
+    /* 選擇過敏原 */
+    .chosen-content {
+        gap: 30px;
     }
     .ag-list {
         margin: 40px 0;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 40px;
+        column-gap: 40px;
+        justify-items: center;
     }
-    .progress-bar-container {
-        width: 90%;
-    }
-    .test-bg-container {
-        right: 80px;
-        top: 400px;
-        width: 60px;
-        height: 60px;
-    }
-    .title, .name-txt, .question {
-        font-size: 25px;
-    }
-    .name-content {
-        letter-spacing: 1px;
-        width: 95%;
+    .ag-list li {
+        height: 25px;
+        width: 85%;
+        font-size: 20px; 
     }
     .chosen-txt {
         margin: 0;
@@ -492,10 +458,58 @@ button:active, li:active {
     .chosen-txt p {
         font-size: 45px;
     }
-    button, li, .name-input {
-        width: 200px;
-        height: 60px;
-        font-size: 20px;
+    .confirm-selection {
+        font-size: 23px !important;
+        height: 55px;
+    }
+
+    /* 測驗問題 */
+    .text-content {
+        padding: 0 20px;
+    }
+    .num-stroke {
+        -webkit-text-stroke: 2px #029de2;
+    }
+    .question {
+        font-size: 25px;
+        position: unset;
+        text-shadow: -1px -1px 0 #029de2, 1px -1px 0 #029de2, -1px 1px 0 #029de2, 1px 1px 0 #029de2;
+    }
+    .question-stroke {
+        display: none;
+    }
+    .question-stroke, .num-stroke {
+        -webkit-text-stroke: 6px #029de2;
+        /* text-shadow: 3px 3px 3px rgb(0 0 0 / 62%); */
+    }
+    .test-btn {
+        width: 80%;
+    }
+    .ans-list1, .ans-list2{
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        margin: 20px 0;
+    }
+    .ans-list1 li, .ans-list2 li {
+        height: 50px;
+        width: 60%;
+    }
+
+    /* 進度條 */
+    .progress-bar-container {
+        width: 90%;
+    }
+
+    /* 輸入姓名 */
+    .name-content {
+        letter-spacing: 1px;
+        width: 95%;
+    }
+    .name-txt {
+        margin: 20px;
+        font-size: 25px;
+        line-height: 2;
     }
     .name-btn {
         flex-direction: column;
@@ -512,13 +526,16 @@ button:active, li:active {
         width: 30%;
         font-size: 20px;
     }
+
+    button, li, .name-input {
+        width: 200px;
+        height: 60px;
+        font-size: 20px;
+    }
 }
 
 /* iPad Air 專屬調整（根據裝置方向區分） */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-    .title {
-        font-size: 42px;
-    }
     .intro-txt p {
         font-size: 36px;
     }
@@ -536,9 +553,6 @@ button:active, li:active {
     }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-    .title {
-        font-size: 38px;
-    }
     .intro-txt p {
         font-size: 34px;
     }

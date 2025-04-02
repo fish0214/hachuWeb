@@ -1,67 +1,75 @@
 $(document).ready(function() {
-    $('#cardModal').hide();
-    // 綁定卡牌點擊事件（假設卡牌在 #cardsContainer 內，且每張卡牌有 .card 類別）
-    $('#cardsContainer').on('click', '.card', function() {
-      // 複製被點擊卡牌的內容，這裡用 clone() 方法
-      let cardClone = $(this).clone();
-      // 清空並更新 modal 內容
-      $('#modalCardContent').html(cardClone);
-      // 顯示 modal
-      $('#cardModal').fadeIn(200);
-      cardInteraction();
-    });
-  
-    // 綁定 modal 中的關閉按鈕
-    $('.modal .close').on('click', function() {
+  $('#cardModal').hide();
+  $('#cardsContainer').on('click','.card', function() {
+    // 取得卡片的圖片 src
+    let cardImgSrc = $(this).find('img').attr('src');
+    $('.card-front').css('background-image', 'url(' + cardImgSrc + ')');
+    // 顯示 modal
+    $('#cardModal').fadeIn(200);
+  });
+
+  $(".card-wrapper").on("click", function() {
+    $(this).toggleClass('flipped');
+  })
+
+  // 綁定 modal 中的關閉按鈕
+  $('.modal .close').on('click', function() {
+    $('#cardModal').fadeOut(200);
+    $(".card-wrapper").removeClass('flipped');
+  });
+
+  // 點擊 modal 背景也可關閉
+  $(window).on('click', function(e) {
+    if ($(e.target).is('#cardModal')) {
       $('#cardModal').fadeOut(200);
-    });
-  
-    // 點擊 modal 背景也可關閉
-    $(window).on('click', function(e) {
-      if ($(e.target).is('#cardModal')) {
-        $('#cardModal').fadeOut(200);
-      }
-    });
+      $(".card-wrapper").removeClass('flipped');
+    }
+  });
+  cardInteraction();
 });
 
 /**
  * 卡牌互動效果
  */
 function cardInteraction() {
-  $(".card").on("mousemove touchmove", function(e) {
-    let posX, posY;
-    if(e.type === "touchmove") {
-      let rect = this.getBoundingClientRect();
-      posX = e.touches[0].clientX - rect.left;
-      posY = e.touches[0].clientY - rect.top;
-      e.preventDefault();
-    } else {
-      posX = e.offsetX;
-      posY = e.offsetY;
-    }
-    
-    const $card = $(this);
-    const width = $card.width();
-    const height = $card.height();
-    // 以卡牌中心作為參考點
-    const centerX = width / 2;
-    const centerY = height / 2;
-    // 計算滑鼠與中心點的距離（正負值）
-    const deltaX = posX - centerX;
-    const deltaY = posY - centerY;
-    // 設定旋轉敏感度（數值可依需求調整）
-    const rotateY = -deltaX / 20; // 水平移動影響 Y 軸旋轉
-    const rotateX = deltaY / 20;  // 垂直移動影響 X 軸旋轉
-    
-    // 更新 transform，達到 3D 旋轉效果
-    $card.css("transform", `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
-  });
-  
-  // 當滑鼠或觸控離開時，還原卡牌
-  $(".card").on("mouseleave touchend touchcancel", function() {
-    $(this).css("transform", "rotateX(0deg) rotateY(0deg)");
-  });
+  var $cards = $(".card-wrapper");
+  var $style = $(".hover");
+  $cards
+    .on("mousemove", function (e) {
+      var $card = $(this);
+      if ($card.hasClass("flipped")) return;
+      
+      // 使用頁面座標與元素 offset 計算較穩定的滑鼠位置
+      var offset = $card.offset();
+      var x = e.pageX - offset.left;
+      var y = e.pageY - offset.top;
+      var w = $card.width();
+      var h = $card.height();
+      // 計算百分比位置
+      var lp = Math.abs(Math.floor((100 / w) * x) - 100);
+      var tp = Math.abs(Math.floor((100 / h) * y) - 100);
+      // 調整偽元素的背景位置（可根據需求微調）
+      var lp2 = 50 - Math.abs(lp) / 10 + 5;
+      var tp2 = 50 - Math.abs(tp) / 10 + 5;
+      // 計算卡牌旋轉角度
+      var ty = (tp - 50) / 2;
+      var tx = (lp - 50) * 0.5 * -1;
+      // 定義 CSS 屬性字串
+      var bg = `background-position: ${lp}% ${tp}%;`;
+      var bg2 = `background-position: ${lp2}% ${tp2}%;`;
+      var tf = `transform: rotateX(${ty}deg) rotateY(${tx}deg);`;
+      // 只針對 active 狀態的卡牌套用互動效果
+      var styleContent = `
+        .card-wrapper.active .card-front::before { ${bg} }
+        .card-wrapper.active .card-front::after { ${bg2} }
+        .card-wrapper.active { ${tf} }
+      `;
+      // 移除其他卡牌的 active 狀態，再設定當前卡牌為 active
+      $cards.removeClass("active");
+      $card.addClass("active");
+      $style.html(styleContent);
+    })
+    .on("mouseout", function () {
+      $cards.removeClass("active");
+    });
 }
-
-
-  
