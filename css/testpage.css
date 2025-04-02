@@ -414,15 +414,15 @@ button:active, li:active {
 /* 手機 */
 @media screen and (max-width: 768px) {
     section {
-        height: 80vh;
-        margin: 10px;
+        height: 85vh;
+        margin: 15px;
     }
     .enter {
-        margin: 10px;
+        margin: 15px;
         background-image: url(/image/background/mainpg-phone_bg.png);
     }
     .intro, .chooseModal, .name {
-        margin: 10px;
+        margin: 15px;
         background-image: url(/image/background/main-phone_bg.png);
     }
     .test#background {

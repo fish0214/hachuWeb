@@ -34,7 +34,7 @@ main{
     display: flex;
     align-items: center;
     gap: 50px;
-    margin: 20px auto;
+    margin: 100px 20px 20px 20px;
     text-align: center;
 }
 .search input {
