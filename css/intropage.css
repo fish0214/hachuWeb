@@ -372,8 +372,15 @@ section p{
     .card-img {
         height: 300px;
         width: 200px;
+    }
+    .card-title {
+        font-size: 20px;
     } 
     .card-txt h1 {
         margin: 20px 30px;
+    }
+    .card-txt h3 {
+        margin: 20px 0px 20px 50px;
+        font-size: 20px;
     }
 }

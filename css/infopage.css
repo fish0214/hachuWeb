@@ -220,7 +220,7 @@ header{
 
   .introimg-container img {
     height: 145px;
-    margin-block-end: 20px;
+    margin-block-end: 40px;
   }
   .intro-dust, .intro-food, .intro-pollen, .intro-hair, .intro-metal, .intro-drug {
     margin: 0 20px;
@@ -245,9 +245,9 @@ header{
     gap: 20px;
   }
   .info-btn {
-    height: 35px;
-    width: 60%;
-    font-size: 16px;
+    height: 40px;
+    width: 70%;
+    font-size: 18px;
     padding: 10px;
   }
 
@@ -255,6 +255,7 @@ header{
   .txt-header {
     font-size: 40px;
     text-align: center;
+    text-shadow: none;
   }
   .card {
     width: 100%;
@@ -264,6 +265,11 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
+  }
+  .card-back {
+    border-radius: 10px;
+    background-color: #FFF;
   }
   .card-back h1 {
     font-size: 28px;
