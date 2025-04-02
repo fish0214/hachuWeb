@@ -414,7 +414,7 @@ button:active, li:active {
 /* 手機 */
 @media screen and (max-width: 768px) {
     section {
-        height: 95vh;
+        height: 80vh;
         margin: 10px;
     }
     .enter {
@@ -423,6 +423,9 @@ button:active, li:active {
     }
     .intro, .chooseModal, .name {
         margin: 10px;
+        background-image: url(/image/background/main-phone_bg.png);
+    }
+    .test#background {
         background-image: url(/image/background/main-phone_bg.png);
     }
     .intro-content {
@@ -448,9 +451,9 @@ button:active, li:active {
         justify-items: center;
     }
     .ag-list li {
-        height: 25px;
-        width: 85%;
-        font-size: 20px; 
+        height: 30px;
+        width: 90%;
+        font-size: 23px;
     }
     .chosen-txt {
         margin: 0;
@@ -459,7 +462,7 @@ button:active, li:active {
         font-size: 45px;
     }
     .confirm-selection {
-        font-size: 23px !important;
+        font-size: 25px !important;
         height: 55px;
     }
 

@@ -25,7 +25,6 @@ $(document).ready(function() {
       $(".card-wrapper").removeClass('flipped');
     }
   });
-  cardInteraction();
 });
 
 /**
