@@ -1,3 +1,5 @@
+import {fetchMonsterImagePath,  uploadCardImage, saveUserData } from "./firebaseHelper.js";
+
 document.addEventListener("DOMContentLoaded", function() {
     const storedData = localStorage.getItem("quizResults");
 
@@ -64,7 +66,6 @@ function updateCard(data, monsterImgUrl) {
     // 設定攻擊力
     const attackImg = document.getElementById("attackImg");
     attackImg.src = mapSeverityToImage(data.severity);
-    console.log(attackImg.src);
     
     // 設定出沒地點(過敏原)
     const locationList = document.querySelector("#location");
@@ -153,62 +154,25 @@ function exportCard() {
         useCORS: true
     }).then(canvas => {
         const dataUrl = canvas.toDataURL('image/png');
+        const fileName = `${userName}_${Date.now()}_monsterCard.png`;
 
-        // 將圖片上傳至Firebase Storage
-        const storageRef = firebase.storage().ref(`cards/${userName}_monsterCard.png`);
-
-        storageRef.putString(dataUrl, 'data_url')
-            .then(snapshot => {
-                console.log('成功上傳至Firebase Storage！');
-                // 取得上傳後的下載 URL
-                snapshot.ref.getDownloadURL().then(downloadURL => {
-                    // 傳送資料至後端
-                    const quizResults = JSON.parse(localStorage.getItem("quizResults"));
-                    saveUserData(quizResults, downloadURL);
-
-                    // 儲存 URL 至 localStorage
-                    localStorage.setItem('cardUrl', downloadURL);  
-                    
-                    // 導向卡牌展示頁面
+        uploadCardImage(dataUrl, fileName)
+            .then(downloadURL => {
+                const quizResults = JSON.parse(localStorage.getItem("quizResults"));
+        
+                // 儲存至 Firebase Realtime Database
+                saveUserData(quizResults, downloadURL);
+        
+                // 儲存至 localStorage
+                localStorage.setItem('cardUrl', downloadURL);  
+       
+                // 跳轉展示頁面
+                setTimeout(() => {
                     window.location.href = 'MonsterCardShow.html?cardUrl=' + encodeURIComponent(downloadURL);
-
-                });requestAnimationFrame;
+                }, 5000);
             })
             .catch(error => {
-                console.error('上傳失敗：', error);
+                console.error("上傳卡牌圖片失敗：", error);
             });
-    });
-}
-
-
-/**
- * 傳送使用者名稱、過敏原、卡牌URL 至後端 
- * @param {*} quizResults - 從 localStorage 中讀取的測驗結果
- * @param {*} cardUrl - 上傳後的卡牌下載 URL
- */
-function saveUserData(quizResults, cardUrl) {
-    const userCardData = {
-        userName: quizResults.userName,
-        userAnswers: quizResults.allergens,
-        cardUrl: cardUrl
-    };
-    console.log("儲存資訊：", userCardData);
-    
-
-    fetch("saveTestResult.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userCardData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.message === "Data saved successfully") {
-            console.log("使用者資訊成功儲存 !");
-        } else {
-            console.error("儲存失敗：", data.error || data.message);
-        }
-    })
-    .catch(error => {
-        console.error("請求失敗：", error);
     });
 }

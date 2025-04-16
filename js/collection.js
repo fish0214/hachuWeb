@@ -1,40 +1,45 @@
-// 當頁面載入時
+import { loadCards } from './firebaseHelper.js';
+
 $(document).ready(function(){
     // 載入所有卡牌
-    loadCards(1);
+    loadAndRenderCards(1);
   
     // 搜尋按鈕點擊事件
     $("#searchBtn").on("click", function(){
       let searchText = $("#searchInput").val().trim();
-      loadCards(1, searchText);
+      loadAndRenderCards(1, searchText);
     });
 
     $("#searchInput").on("keypress", function(e){
       if (e.key === "Enter") {
         let searchText = $("#searchInput").val().trim();
-        loadCards(1, searchText);
+        loadAndRenderCards(1, searchText);
       }
     });
 });
-  
-// 透過 AJAX 請求取得卡牌資料，page：當前頁碼, search：搜尋關鍵字, limit：每頁筆數（預設10筆）
-function loadCards(page, search = "", limit = 12) {
-    $.ajax({
-      url: "getCards.php",
-      method: "GET",
-      data: { page: page, limit: limit, search: search },
-      dataType: "json",
-      success: function(response) {
-        renderCards(response.cards);
-        renderPagination(response.page, response.totalPages, search, limit);
-    },
-      error: function(xhr, status, error) {
-        console.error("取得卡牌資料失敗:", error);
-      }
-    });
+
+/**
+ * 載入卡牌資料並渲染到頁面上
+ * @param {*} page 
+ * @param {*} search 
+ * @param {*} limit 
+ */
+function loadAndRenderCards(page, search = "", limit = 12) {
+  loadCards(page, search, limit).then(response => {
+    renderCards(response.cards);
+    renderPagination(response.page, response.totalPages, search, limit);
+  })
+  .catch(err => {
+    console.error("載入卡牌資料時發生錯誤：", err);
+    $("#cardsContainer").html(`<p class="error">讀取資料失敗，請稍後再試。</p>`);
+  });
 }
   
-// 將取得的卡牌資料渲染到頁面上
+/**
+ * 將取得的卡牌資料渲染到頁面上
+ * @param {*} cards 
+ * @returns 
+ */
 function renderCards(cards) {
     const container = $("#cardsContainer");
     container.empty();
@@ -46,15 +51,21 @@ function renderCards(cards) {
     cards.forEach(card => {
       const cardElement = $(`
         <div class="card">
-          <img class="card-img" src="${card.card_url}" alt="卡牌圖片">
-          <p class="card-title">${card.user_name}</p>
+          <img class="card-img" src="${card.cardUrl}" alt="卡牌圖片">
+          <p class="card-title">${card.userName}</p>
         </div>
       `);
       container.append(cardElement);
     });
 }
-  
-// 根據當前頁碼與總頁數渲染分頁控制元件
+
+/**
+ * 根據當前頁碼與總頁數渲染分頁控制元件
+ * @param {*} currentPage 
+ * @param {*} totalPages 
+ * @param {*} search 
+ * @param {*} limit 
+ */
 function renderPagination(currentPage, totalPages, search, limit) {
     let paginationHtml = "";
   
@@ -92,6 +103,6 @@ function renderPagination(currentPage, totalPages, search, limit) {
       let page = $(this).data("page");
       let searchText = $(this).data("search");
       let limitVal = $(this).data("limit");
-      loadCards(page, searchText, limitVal);
+      loadAndRenderCards(page, searchText, limitVal);
     });
 }

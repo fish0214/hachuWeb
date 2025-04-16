@@ -4,6 +4,8 @@ body, html {
     padding: 0;
     background: #faf9f8;
     letter-spacing: 3px;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 p {
     margin: 0;
@@ -55,6 +57,9 @@ section.active {
 }
 
 /* 各內容區塊，加入 Safari 的 flex 前置詞 */
+.test-content {
+    width: 75%;
+}
 .intro-content, .enter-content, .test-content, .finish-content, .chosen-content {
     display: -webkit-flex;
     display: flex;
@@ -103,14 +108,14 @@ button, li, .name-input {
 }
 
 /* 按鈕懸停效果 */
-button:hover, li:hover {
+/* button:hover, li:hover {
     background: -webkit-linear-gradient(160deg, #12d0ff, #03cbfd);
     background: linear-gradient(160deg, #12d0ff, #03cbfd);
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2),
                 inset 3px 3px 6px rgba(255, 255, 255, 0.5);
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
-}
+} */
 
 /* 按鈕按下效果 */
 button:active, li:active {
@@ -176,6 +181,7 @@ button:active, li:active {
 }
 .question-container {
     position: relative;
+    letter-spacing: 10px;
 }
 .question {
     position: absolute;
@@ -284,11 +290,12 @@ button:active, li:active {
     margin-top: 20px;
     overflow: hidden;
     position: relative;
+    top: 75%;
 }
 .progress-bar {
     width: 0%;
     height: 100%;
-    background-color: #ccff00;
+    background-color: #ff00c3;
     border-radius: 5px;
     -webkit-transition: width 0.3s ease-in-out;
     transition: width 0.3s ease-in-out;

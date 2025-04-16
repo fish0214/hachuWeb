@@ -227,28 +227,21 @@ function changeBackground(background, backgroundElement, currentAllergen) {
     switch (currentAllergen) {
         case "dust":
             background.css("background-image", "url('image/background/dust_bg.png')");
-            // backgroundElement.css("background-image", "url('image/backgroundElements/dust_broom.png')");
-            // backgroundElement.addClass("sweep-animation"); // 掃把掃地動畫
             break;
         case "pollen":
             background.css("background-image", "url('image/background/pollen_bg.png')");
-            // backgroundElement.css("background-image", "url('images/flower.png')");
             break;
         case "drug":
             background.css("background-image", "url('image/background/drug_bg.png')");
-            // backgroundElement.css("background-image", "url('images/pill.png')");
             break;
         case "food":
             background.css("background-image", "url('image/background/food_bg.png')");
-            // backgroundElement.css("background-image", "url('images/food.png')");
             break;
         case "metal":
             background.css("background-image", "url('image/background/metal_bg.png')");
-            // backgroundElement.css("background-image", "url('images/coin.png')");
             break;
         case "animal":
             background.css("background-image", "url('image/background/animal_bg.png')");
-            // backgroundElement.css("background-image", "url('images/paw.png')");
             break;
     }
 }
