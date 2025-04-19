@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>hachu</title>
-    <link rel="icon" href="/image/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/style.css"/>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" href="image/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
   </head>
   <body class="gradient-bg scroll-container">
@@ -22,11 +22,11 @@
       <div class="mobile-navbar">
         <div class="mobile-navbar-header">
             <button class="mobile-menu-toggle">
-                <img src="/image/menu.png" alt="Menu" />    
+                <img src="image/menu.png" alt="Menu" />
             </button>
         </div>
         <div class="mobile-navbar-logo">
-            <img class="navbar-logo" id="index-page-mobile" src="/image/hachu_logo.png" alt="">
+            <img class="navbar-logo" id="index-page-mobile" src="image/hachu_logo.png" alt="">
         </div>
         <nav class="mobile-menu">
             <ul>
@@ -41,7 +41,8 @@
 
     <main >
       <div class="logo">
-        <img src="/image/hachu_logo.png" alt="">
+        <img src="image/hachu_logo.png" alt="">
+        <p>躲不掉？那就和過敏當一輩子的朋友吧！</p>
       </div>
 
       <div class="map">
@@ -49,38 +50,52 @@
 
         <!-- First Blob -->
         <section class="flex-end" data-scroll data-scroll-delay="0.04" data-scroll-speed="0.2">
-          <div class="blob-container bounce">
+          <div class="blob-container bounce first-blob">
             <div class="blob1">
               <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
                 <defs>
                   <pattern id="bgImage1" patternUnits="userSpaceOnUse" width="500" height="500">
-                    <image xlink:href="webp\blue_1.webp" x="0" y="0" width="500" height="500"/>
+                    <image xlink:href="webp\pink_1.webp" x="0" y="0" width="500" height="500"/>
                   </pattern>
                 </defs>
                 <defs>
                   <pattern id="bgImage2" patternUnits="userSpaceOnUse" width="500" height="500">
-                    <image xlink:href="webp\pink_1.webp" x="0" y="0" width="500" height="500"/>
+                    <image xlink:href="webp\blue_1.webp" x="0" y="0" width="500" height="500"/>
                   </pattern>
                 </defs>
                 <path class="blob-path" fill="url(#bgImage2)"></path>
               </svg>
             </div>
-            <div class="blob2 blob-pink"></div>
+            <div class="blob2 blob-blue"></div>
           </div>
+          <!-- 圓弧文字 -->
+          <div class="blob-text-curve" id="curvedText">
+            <svg viewBox="0 0 500 500" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <path id="curveTextPath" d="M250,250 m-180,0 a180,180 0 1,1 360,0 a180,180 0 1,1 -360,0" fill="none"/>
+              </defs>
+              <text>
+                <textPath xlink:href="#curveTextPath" startOffset="50%" text-anchor="middle">hachu x allergy</textPath>
+              </text>
+            </svg>
+          </div>
+          
         </section>
 
         <!-- Second Blob -->
         <section class="flex-start section-2" data-scroll data-scroll-delay="0.04" data-scroll-speed="0.3">
           <canvas class="section-canvas"></canvas>
-          <div class="blob-container bounce">
+          <div class="blob-container bounce second-blob">
             <div class="blob1">
               <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
                 <path class="blob-path" fill="url(#bgImage1)"></path>
               </svg>
             </div>
-            <div class="blob2 blob-blue"></div>
+            <div class="blob2 blob-pink"></div>
             <div class="bub-txt">
-              <p>關於 <br />hachu</p>
+              <span class="bub-txt-pink bub-line-1">關於</span><br />
+              <span class="bub-txt-pink bub-line-2">hachu</span>
             </div>
           </div>
           <div class="second li-container">
@@ -90,7 +105,7 @@
                   <path class="blob-path" fill="url(#bgImage1)"></path>
                 </svg>
               </div>
-              <div class="blob2 blob-blue"></div>
+              <div class="blob2 blob-pink"></div>
               <h1>作品概念</h1>
             </div>
             <div class="small-blob-container" id="intro-group">
@@ -99,7 +114,7 @@
                   <path class="blob-path" fill="url(#bgImage1)"></path>
                 </svg>
               </div>
-              <div class="blob2 blob-blue"></div>
+              <div class="blob2 blob-pink"></div>
               <h1>團隊介紹</h1>
             </div>
           </div>
@@ -109,16 +124,17 @@
         <section class="flex-end section-3" data-scroll data-scroll-delay="0.04" data-scroll-speed="0.1">
           <canvas class="section-canvas"></canvas>
 
-          <div class="blob-container bounce">
-            <div class="bub-txt">
-              <p>hachu <br />資訊分享站</p>
+          <div class="blob-container bounce third-blob">
+            <div class="bub-txt bub-txt-blue">
+              <span class="bub-txt-blue bub-line-1">hachu</span><br />
+              <span class="bub-txt-blue bub-line-2">資訊分享站</span>
             </div>
             <div class="blob1">
               <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
                 <path class="blob-path" fill="url(#bgImage2)"></path>
               </svg>
             </div>
-            <div class="blob2 blob-pink"></div>
+            <div class="blob2 blob-blue"></div>
           </div>
           <div class="third li-container">
             <div class="small-blob-container" id="info-allergy">
@@ -127,7 +143,7 @@
                   <path class="blob-path" fill="url(#bgImage2)"></path>
                 </svg>
               </div>
-              <div class="blob2 blob-pink"></div>
+              <div class="blob2 blob-blue"></div>
               <h1>六大過敏原</h1>
             </div>
             <div class="small-blob-container" id="info-how">
@@ -136,7 +152,7 @@
                   <path class="blob-path" fill="url(#bgImage2)"></path>
                 </svg>
               </div>
-              <div class="blob2 blob-pink"></div>
+              <div class="blob2 blob-blue"></div>
               <h1>過敏是如何發生？</h1>
             </div>
           </div>
@@ -146,15 +162,16 @@
         <section class="flex-start section-4" data-scroll data-scroll-speed="0.2">
           <canvas class="section-canvas"></canvas>
 
-          <div class="blob-container bounce">
+          <div class="blob-container bounce fourth-blob">
             <div class="blob1">
               <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
                 <path class="blob-path" fill="url(#bgImage1)"></path>
               </svg>
             </div>
-            <div class="blob2 blob-blue"></div>
-            <div class="bub-txt">
-              <p>hachu <br />測驗</p>
+            <div class="blob2 blob-pink"></div>
+            <div class="bub-txt bub-txt-pink">
+              <span class="bub-txt-pink bub-line-1">hachu</span><br />
+              <span class="bub-txt-pink bub-line-2">測驗</span>
             </div>
           </div>
           <div class="fourth li-container">
@@ -164,24 +181,25 @@
                   <path class="blob-path" fill="url(#bgImage1)"></path>
                 </svg>
               </div>
-              <div class="blob2 blob-blue"></div>
-              <h1>哈啾大搜集</h1>
+              <div class="blob2 blob-pink"></div>
+              <h1>創造屬於你的<br>寶貝啾</h1>
             </div>
           </div>
         </section>
 
         <!-- Fifth Blob -->
-        <section class="flex-end" data-scroll data-scroll-speed="0.3">
-          <div class="blob-container bounce">
-            <div class="bub-txt">
-              <p>寶貝啾 <br />收集冊</p>
+        <section class="flex-end justify-center" data-scroll data-scroll-speed="0.3">
+          <div class="blob-container bounce fifth-blob justify-center">
+            <div class="bub-txt bub-txt-blue">
+              <span class="bub-txt-blue bub-line-1">寶貝啾</span><br />
+              <span class="bub-txt-blue bub-line-2">收集冊</span>
             </div>
             <div class="blob1">
               <svg class="" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
                 <path class="blob-path" fill="url(#bgImage2)"></path>
               </svg>
             </div>
-            <div class="blob2 blob-pink"></div>
+            <div class="blob2 blob-blue"></div>
           </div>
         </section>
       </div>
@@ -196,14 +214,14 @@
     <footer>
       <div class="footer-icons">
         <div class="footer-logo">
-          <img src="/image/hachu.png" alt="">
+          <img src="image/hachu.png" alt="">
         </div>
         <div class="footer-socialmedia">
           <a href="https://www.instagram.com/hachu.2025?igsh=MXd3dTFtMzEzZ3Y2cg==" target="_blank" rel="noopener noreferrer">
-            <img src="/image/instagram.png" alt="">
+            <img src="image/instagram.png" alt="">
           </a>
           <a href="https://www.threads.net/@hachu.2025?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer">
-            <img src="/image/threads.png" alt="">
+            <img src="image/threads.png" alt="">
           </a>
         </div>
       </div>
@@ -211,8 +229,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-    <script src="/js/smoothScroll.js"></script>
-    <script src="/js/bubbleStyle.js"></script>
-    <script src="/js/navbarControl.js"></script>
+    <script src="js/smoothScroll.js"></script>
+    <script src="js/bubbleStyle.js"></script>
+    <script src="js/navbarControl.js"></script>
   </body>
 </html>

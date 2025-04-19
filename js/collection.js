@@ -34,7 +34,7 @@ function loadAndRenderCards(page, search = "", limit = 12) {
     $("#cardsContainer").html(`<p class="error">讀取資料失敗，請稍後再試。</p>`);
   });
 }
-  
+
 /**
  * 將取得的卡牌資料渲染到頁面上
  * @param {*} cards 
@@ -55,6 +55,7 @@ function renderCards(cards) {
           <p class="card-title">${card.userName}</p>
         </div>
       `);
+      cardElement.data("allergens", card.allergens || []);
       container.append(cardElement);
     });
 }

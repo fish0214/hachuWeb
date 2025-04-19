@@ -1,4 +1,13 @@
 $(document).ready(function() {
+  scroll.on("scroll", (obj) => {
+    const scrollY = obj.scroll.y;
+  
+    const curvedText = document.getElementById("curvedText");
+    const rotateDeg = (scrollY * 0.3) + 300;
+  
+    curvedText.style.transform = `rotate(${rotateDeg}deg)`;
+  });
+
   $(window).on("resize", function() {
       resizeCanvas();
       drawMainBubbleLines();
@@ -6,7 +15,7 @@ $(document).ready(function() {
   });
 
   $(window).on("scroll", function() {
-    // parallaxEffect();
+    requestAnimationFrame(updateCurvedText);
   });
   
   // 綁定大泡泡的點擊事件
@@ -59,6 +68,7 @@ function insertAnimate() {
       }
   });
 }
+
 /**
  * 動態設置畫布尺寸
  */
@@ -80,6 +90,7 @@ function getCenter(element) {
       y: rect.top + rect.height / 2
   };
 }
+
 /**
  * 繪製大氣泡之間的連線
  */
@@ -87,7 +98,6 @@ function drawMainBubbleLines() {
   const containerRect = container.getBoundingClientRect();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  ctx.strokeStyle = "#b6c3c576";
   ctx.lineWidth = 0.5;
 
   sections.forEach((section, index) => {
@@ -100,14 +110,37 @@ function drawMainBubbleLines() {
 
       const endX = bubble2.left - containerRect.left + bubble2.width / 2;
       const endY = bubble2.top - containerRect.top + bubble2.height / 2;
+      
+      const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
 
+      if (index % 2 === 0) {
+        gradient.addColorStop(0, "#98FFB4");
+        gradient.addColorStop(0.5, "#2EAFE6");
+        gradient.addColorStop(1, "#DF342E");
+      } else {
+        gradient.addColorStop(0.2, "#DF342E");
+        gradient.addColorStop(0.6, "#2EAFE6");
+        gradient.addColorStop(1, "#98FFB4");
+      }
+
+      ctx.strokeStyle = gradient; // 使用漸層顏色
       ctx.beginPath();
       ctx.moveTo(startX, startY);
       ctx.lineTo(endX, endY);
       ctx.stroke();
+      ctx.globalAlpha = 0.8; // 重置透明度
       }
   });
 }
+
+/**
+ * 動畫循環繪製大氣泡之間的連線
+ */
+function animateMainBubbleLines() {
+  drawMainBubbleLines();
+  requestAnimationFrame(animateMainBubbleLines);
+}
+
 /**
  * 繪製大氣泡與小氣泡的連線
  */
@@ -130,15 +163,34 @@ function drawSmallBubbleLines(section, sectionCanvas) {
           const endX = smallBlobCenter.x - canvasOffset.left;
           const endY = smallBlobCenter.y - canvasOffset.top;
 
+          const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
+
+          // 判斷 section 類型套用不同漸層
+          if (section.classList.contains("section-2") || section.classList.contains("section-4")) {
+            gradient.addColorStop(0, "#FF98FA");
+            gradient.addColorStop(1, "#FFE69B");
+          } else if (section.classList.contains("section-3")) {
+            gradient.addColorStop(0, "#1472B1");
+            gradient.addColorStop(1, "#98FFB4");
+          } else {
+            gradient.addColorStop(0, "#ccc");
+            gradient.addColorStop(1, "#eee");
+          }
+
           ctx.beginPath();
           ctx.moveTo(startX, startY);
           ctx.lineTo(endX, endY);
-          ctx.strokeStyle = "#fba8cf";
+          ctx.strokeStyle = gradient;
           ctx.lineWidth = 1;
+          ctx.globalAlpha = 0.8; // 重置透明度
           ctx.stroke();
       });
   }
 }
+
+/**
+ * 繪製所有小氣泡的連線
+ */
 function drawAllConnections() {
   sections.forEach(section => {
       const sectionCanvas = section.querySelector(".section-canvas");
@@ -149,15 +201,13 @@ function drawAllConnections() {
   });
 }
 
-function parallaxEffect() {
-  const scrollY = window.scrollY;
-  const map = document.querySelector('.map');
-  const sections = document.querySelectorAll('section');
-  if (scrollY <= 600) {
-    map.style.transform = "translateY(" + (-scrollY / 3) + "px" + ")";
-    sections.forEach((section) => {
-      const speed = section.getAttribute('data-speed') || 3;
-      section.style.transform = "translateY(" + (-scrollY / speed) + "px" + ")";
-    });
-  }
+/**
+ * 更新圓形文字的旋轉角度
+ */
+function updateCurvedText() {
+  const curvedText = document.getElementById("curvedText");
+
+  const scrollTop = window.scrollY;
+  const rotateDeg = (scrollTop * 0.1) + 300; // 控制旋轉速度（每 10px 滾動轉 1 度）
+  curvedText.style.transform = `rotate(${rotateDeg}deg)`;
 }

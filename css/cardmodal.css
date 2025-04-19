@@ -3,7 +3,7 @@
   display: none;
   display: flex;
   position: fixed;
-  z-index: 1000;
+  z-index: 100;
   left: 0;
   top: 0;
   width: 100%;
@@ -17,14 +17,21 @@
   display: flex;
   background-image: linear-gradient(116deg, #c8feff, #fff1b9);
   padding: 20px;
-  width: 80%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 1200px;
   border-radius: 10px;
   position: relative;
   justify-content: center;
   height: 80%;
   align-items: center;
   flex-direction: column;
+}
+.modal-main-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 60px;
+  align-items: center;
 }
 .modal-content .card-title {
   display: none;
@@ -44,12 +51,18 @@
   text-decoration: none;
 }
 
+/* 卡牌前後翻轉樣式 */
 .card-wrapper {
   width: 316px;
   height: 506px;
-  position: absolute;
+  position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
+  margin-left: 100px;
+}
+.card-wrapper.flipped{
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 .card-side {
   position: absolute;
@@ -66,11 +79,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   backface-visibility: hidden;
   z-index: 2;
+  overflow: hidden;
 }
-/* 閃亮效果 */
+.card-back {
+  background: #fff url('../image/card/card_back.png') no-repeat center;
+  background-size: cover;
+  color: #000;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-family: sans-serif;
+}
+
+/* 卡牌閃亮效果 */
 .card-front::before,
 .card-front::after {
     content: "";
@@ -85,7 +110,6 @@
     background-repeat: no-repeat;
     mix-blend-mode: screen;
 }
-
 .card-front::before {
   background-position: 50% 50%;
   background-size: 300% 300%;
@@ -104,49 +128,129 @@
   border-radius: 27px;
   filter: brightness(0.75) contrast(1.5);
 }
-@keyframes holoGradient {
-    3% { opacity: 0; }
-    5% { background-position: 100% 100%; opacity: 1; }
-    7% { opacity: 0.3; }
-    9% { background-position: 100% 100%; }
-    11% { opacity: 0; }
-    50% { opacity: 0; background-position: 100% 100%; }
-    65% { opacity: 0.2; }
-    70% { opacity: 0; background-position: 0% 0%; }
-}
 .card-front::after {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif");
-    background-position: center;
-    background-size: 160%;
-    opacity: 1;
-    z-index: 3;
-    animation: holoSparkle 15s ease infinite both;
-    filter: brightness(2.25);
-    transition: filter 0.5s ease;
-    mix-blend-mode: screen;
-    border-radius: 27px;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif");
+  background-position: center;
+  background-size: 160%;
+  opacity: 1;
+  z-index: 3;
+  animation: holoSparkle 15s ease infinite both;
+  filter: brightness(2.25);
+  transition: filter 0.5s ease;
+  mix-blend-mode: screen;
+  border-radius: 27px;
 }
-
+@keyframes holoGradient {
+  3% { opacity: 0; }
+  5% { background-position: 100% 100%; opacity: 1; }
+  7% { opacity: 0.3; }
+  9% { background-position: 100% 100%; }
+  11% { opacity: 0; }
+  50% { opacity: 0; background-position: 100% 100%; }
+  65% { opacity: 0.2; }
+  70% { opacity: 0; background-position: 0% 0%; }
+}
 @keyframes holoSparkle {
-    0% { opacity: 0; }
-    12% { opacity: 1; }
-    70% { opacity: 0.5; }
-    95% { opacity: 0.2; }
-    100% { opacity: 0; }
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  70% { opacity: 0.5; }
+  95% { opacity: 0.2; }
+  100% { opacity: 0; }
 }
 
-.card-back {
-  background: #fff url('/image/card/卡片背面.png') no-repeat center;
-  background-size: cover;
-  color: #000;
-  transform: rotateY(180deg);
+/* 衛教資訊區塊 */
+.card-info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 650px;
+  text-align: justify;
+  max-height: 503px;
+  overflow: scroll;
+  overflow-x: visible;
+  color: var(--text-blue-dark);
+  letter-spacing: 1px;
+}
+.card-info-box h2 {
+  font-size: 20px;
+  margin: unset;
+}
+.card-info-box h3 {
+  font-size: 20px;
+  margin: 30px 0 10px 0px;
+}
+.card-info-box p {
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 5px 0;
+  font-family: NormalFont;
+}
+.traits-list {
+  list-style: none;
+  padding: 0;
+  margin: unset;
+  margin-bottom: 40px;
+}
+.traits-list li {
+  margin-bottom: 30px;
+}
+.trait-title {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-family: sans-serif;
+  gap: 10px;
+  margin-bottom: 5px;
 }
-.card-wrapper.flipped{
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
+.trait-icon {
+  height: 30px;
+}
+.defense-list {
+  list-style: none;
+  padding: 0;
+  margin: unset;
+}
+.defense-title {
+  font-size: 20px;
+}
+.defense-list li {
+  font-size: 18px;
+  font-family: NormalFont;
+}
+/* 美化捲軸 */
+.card-info-box::-webkit-scrollbar {
+  width: 5px;
+}
+.card-info-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+.card-info-box::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+/* QR Code */
+.qr-box {
+  position: absolute;
+  height: 493px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  right: 90px;
+}
+.qrimg-container {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+.qr-box img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  padding: 10px;
+}
+.qr-caption {
+  font-size: 16px;
+  margin-top: 10px;
+  color: var(--text-blue-dark);
+  margin-bottom: 0;
 }

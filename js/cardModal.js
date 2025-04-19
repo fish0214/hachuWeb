@@ -4,6 +4,13 @@ $(document).ready(function() {
     // 取得卡片的圖片 src
     let cardImgSrc = $(this).find('img').attr('src');
     $('.card-front').css('background-image', 'url(' + cardImgSrc + ')');
+    // 設定 QRCode
+    $("#cardQR").attr("src", generateQR(cardImgSrc));
+
+    // 渲染衛教資訊
+    const allergens = $(this).data("allergens");    
+    renderAllergyEducation(allergens);
+
     // 顯示 modal
     $('#cardModal').fadeIn(200);
   });
@@ -25,6 +32,7 @@ $(document).ready(function() {
       $(".card-wrapper").removeClass('flipped');
     }
   });
+  cardInteraction();
 });
 
 /**
@@ -71,4 +79,145 @@ function cardInteraction() {
     .on("mouseout", function () {
       $cards.removeClass("active");
     });
+}
+
+/**
+ * 生成 QR Code
+ */
+function generateQR(url) {
+  return `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(url)}`;
+}
+
+/**
+ * 渲染衛教資訊
+ * @param {*} allergens 
+ */
+function renderAllergyEducation(allergens) {
+  const descriptions = {
+    dust: {
+      name: "塵蟎",
+      icon: "image/allergens/allergen_dust.png",
+      traits: [
+        {
+          title: "飛散微粒",
+          desc: "牠的屍體與排泄物能輕易飄進空氣裡，讓人鼻塞、流鼻水、眼睛紅腫！"
+        }
+      ],
+      tips: [
+        "1. 定期更換床單、枕頭套",
+        "2. 使用60°C以上熱水清洗布料",
+        "3. 少用布沙發與地毯，改選好清洗材質"
+      ]
+    },
+    pollen: {
+      name: "花粉",
+      icon: "image/allergens/allergen_flower.png",
+      traits: [
+        {
+          title: "風中潛行",
+          desc: "不是每種花的花粉都會害人，風媒花（如松、柏、艾草）才是罪魁禍首，花粉一飄就攻入你的鼻子與氣管！"
+        }
+      ],
+      tips: [
+        "1. 花粉季外出務必戴口罩",
+        "2. 清晨/黃昏避免外出（花粉濃度高）",
+        "3. 回家後立刻換衣、洗臉、洗手，避免花粉入侵室內"
+      ]
+    },
+    drug: {
+      name: "藥物",
+      icon: "image/allergens/allergen_pill.png",
+      traits: [
+        {
+          title: "藥效逆襲",
+          desc: "你以為藥能治病？某些成分卻可能偷偷逆襲你。青黴素、止痛藥甚至麻醉劑，都可能讓你紅疹、氣喘、甚至過敏性休克！"
+        }
+      ],
+      tips: [
+        "1. 若曾吃藥出現過敏，務必記下藥名",
+        "2. 就診前告知醫師，並考慮過敏測試",
+        "3. 避免自行服藥，謹慎評估風險"
+      ]
+    },
+    food: {
+      name: "食物",
+      icon: "image/allergens/allergen_peanut.png",
+      traits: [
+        {
+          title: "隱藏成分",
+          desc: "花生、蛋、海鮮……有時過敏反應不是吃太多，而是根本不知道它們藏在哪！不小心入口，可能喉嚨腫脹、甚至休克！"
+        }
+      ],
+      tips: [
+        "1. 仔細看食品標示，注意「可能含有○○」",
+        "2. 外食時先告知餐廳你的過敏食材",
+        "3. 隨身攜帶緊急藥物備用"
+      ]
+    },
+    metal: {
+      name: "金屬",
+      icon: "image/allergens/allergen_mental.png",
+      traits: [
+        {
+          title: "金屬伏兵",
+          desc: "別看它閃亮亮，一旦碰上體質敏感的人，「鎳」這種金屬就像伏兵一樣發動攻擊，讓你的皮膚紅腫、癢不停！"
+        }
+      ],
+      tips: [
+        "1.優先選擇純銀、純金或鈦金屬飾品",
+        "2. 避免戴合金飾品睡覺，減少接觸時間"
+      ]
+    },
+    animal: {
+      name: "動物毛髮",
+      icon: "image/allergens/allergen_cat.png",
+      traits: [
+        {
+          title: "隱形附著",
+          desc: "你以為是可愛毛毛？錯！真正惹禍的是牠們皮屑、唾液與尿液裡的蛋白質，會悄悄黏上你，讓你鼻子發癢、氣喘吁吁！"
+        }
+      ],
+      tips: [
+        "1. 保持室內空氣流通",
+        "2. 使用HEPA濾網空氣清淨機",
+        "3. 擁抱毛孩前，先確定自己不會過敏"
+      ]
+    }
+  };
+
+  let html = `<ul class="traits-list">`;
+  let traitCount = 1;
+
+  // 特性描述
+  allergens.forEach(key => {
+    const item = descriptions[key];
+    if (item?.traits) {
+      item.traits.forEach(trait => {
+        html += `
+          <li>
+            <div class="trait-title">
+              <h2>特性${traitCount++}：${trait.title}</h2>
+              <img class="trait-icon" src="${item.icon}" alt="${item.name} icon">
+            </div>
+            <p>${trait.desc}</p>
+          </li>
+        `;
+      });
+    }
+  });
+  html += `</ul><h2 class="defense-title">《 防禦對策大補帖 》</h2>`;
+
+  // 分類 tips
+  allergens.forEach(key => {
+    const item = descriptions[key];
+    if (item?.tips?.length) {
+      html += `<h3>對抗${item.name}：</h3><ul class="defense-list">`;
+      item.tips.forEach(tip => {
+        html += `<li>${tip}</li>`;
+      });
+      html += `</ul>`;
+    }
+  });
+
+  document.getElementById("eduDescription").innerHTML = html;
 }

@@ -1,7 +1,4 @@
-/* 全域共用的設定*/ 
-html * {
-	font-family: MyCustomFont;
-}
+/*** 全域共用的設定 ***/ 
 /* 中文用 源泉圓體  */
 @font-face {
 	font-family: MyCustomFont;
@@ -9,6 +6,7 @@ html * {
 	font-weight: 400;
 	unicode-range: U+4E00-9FFF;
 }
+
 /* 英文 */
 @font-face {
 	font-family: MyCustomFont;
@@ -16,6 +14,7 @@ html * {
 	font-weight: 400;
 	unicode-range: U+00-024F;
 }
+
 /* 粗體中文字 */
 @font-face {
 	font-family: HeaderFont;
@@ -23,15 +22,23 @@ html * {
   font-weight: 400;
 }
 
+html * {
+	font-family: MyCustomFont;
+}
 :root {
 	font-size: 20px;
 	--red: #da2c4d;
 	--yellow: #f8ab37;
   --blue-dark: #006177;
   --bg-blue-light: #ddf9ff;
-  --text-blue: #023c49;
-  --text-blue-dark: #1b315f;
+  --bubline-green: #98FFB4;
+  --bubline-blue: #2EAFE6;
+  --bubline-red: #DF342E;
+  --text-blue: #1472B1;
+  --text-blue-dark: #0F507B;
   --text-blue-light: rgb(84, 107, 137);
+  --text-red: #B73E3E;
+  --text-red-dark: #941E1E;
   --text-pink: #F552AB;
   --text-pink-dark: #540040;
 }
@@ -90,11 +97,11 @@ a {
       -10vmax 10vmax, 40vmax 60vmax;
   }
 }
+
 /*彈跳*/
 .bounce {
   animation: bounce 7s ease-in-out infinite;
 }
-
 @keyframes bounce {
   0%,
   100% {
@@ -105,7 +112,11 @@ a {
   }
 }
 
-/* 頁首-導覽列 */
+/*** 頁首-導覽列 ***/
+header {
+  position: relative;
+  z-index: 100;
+}
 .mobile-navbar {
   display: none;
 }
@@ -120,42 +131,37 @@ a {
   font-weight: 500;
   border: none;
   background-color: transparent;
-  color: var(--blue-dark);
+  color: var(--text-blue);
   padding: 10px 45px;
   cursor: pointer;
   position: relative;
   transition: color 0.3s ease;
 }
-
-/* 利用伺服元素建立背景泡泡 */
 .nav-btn::before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 73%; 
   left: 50%;
-  width: 170px;
-  height: 170px;
-  background-image: url(/image/nav-btn_1.png);
-  background-size: contain;
+  width: calc(100% + 10px); /* 根據文字寬度 + padding 調整 */
+  height: 60px;
+  background-image: url("../image/nav-btn.png");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  z-index: -1; /* 放在按鈕後面 */
+  z-index: -1;
 }
-
-/* Hover 狀態：按鈕文字略微縮放，同時泡泡從中心放大 */
 .nav-btn:hover {
-  color: var(--blue-dark);
+  color: var(--text-blue);
   transform: scale(1.1);
+  text-shadow: 0 0 8px rgb(250, 251, 251);
 }
-
 .nav-btn:hover::before {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
-
 .nav-btn:active {
   border: none;
   color: #FFF;
@@ -171,7 +177,7 @@ a {
   background-image: none;
 }
 
-/* toTop */
+/*** toTop ***/
 .progress-wrap {
 	position: fixed;
 	right: 50px;
@@ -248,19 +254,17 @@ a {
   transition: all 200ms linear;
 }
 
-/* 頁尾 */
+/*** 頁尾 ***/
 footer {
   position: static;
   background: var(--blue-dark);
   padding: 20px 0;
 }
-  
 .footer-links {
   display: flex;
   justify-content: center;
   gap: 50px;
 }
-  
 .footer-links a {
   padding: 10px 20px 5px;
   text-decoration: none;
@@ -269,7 +273,6 @@ footer {
   font-weight: bold;
   border-bottom: 1px solid;
 }
-  
 .footer-icons {
   display: flex;
   align-items: center;
@@ -278,21 +281,35 @@ footer {
   text-align: center;
   gap: 0px 10px;
 }
-  
 .footer-logo{
   width: 100%;
   margin: 10px 0px 10px;
 }
-
 .footer-logo img{
   width: 100px;
 }
-
 .footer-socialmedia img{
   width: 40px;
 }
+.footer-socialmedia img:hover{
+  transform: scale(1.2);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border-block-end: 2px solid #ffffff;
+}
 
-  
+/*** 卷軸 ***/
+body::-webkit-scrollbar {
+  width: 5px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
 /* 排版用的標籤 */
 .left-25{
   left: 25%;
@@ -313,12 +330,15 @@ footer {
 .flex-start{
   flex-wrap: wrap;
 }
+.justify-center{
+  justify-content: center;
+}
 
 /* 手機版導覽列樣式 */
 @media screen and (max-width: 768px) {
   header {
-    display: unset !important;
     padding: 0 !important;
+    height: 75px;
   }
   /* 隱藏桌面版導覽列 */
   .desktop-navbar {
