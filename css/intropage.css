@@ -356,7 +356,6 @@ section.intro-group{
     }
     .introtxt-container h1 {
         font-family: HeaderFont;
-        background-image: linear-gradient(45deg, #49d0df, #017581 80%);
         background-clip: text;
         color: transparent;
         font-size: 60px;
@@ -388,7 +387,6 @@ section.intro-group{
     }
     .introgroup-title h1 {
         font-family: HeaderFont;
-        background-image: linear-gradient(45deg, #49d0df, #017581 80%);
         background-clip: text;
         color: transparent;
         font-size: 60px;
@@ -406,14 +404,22 @@ section.intro-group{
         height: 300px;
         width: 200px;
     }
+    .card-txt {
+        width: 100%;
+        justify-content: space-between;
+    }
     .card-title {
-        font-size: 20px;
+        position: relative;
+        font-size: 16px;
+        width: 30%;
+        left: 0;
     } 
     .card-txt h1 {
         margin: 20px 30px;
     }
     .card-txt h3 {
-        margin: 20px 0px 20px 50px;
+        margin: 20px 0px 20px 0px;
         font-size: 20px;
+        width: 70%;
     }
 }
