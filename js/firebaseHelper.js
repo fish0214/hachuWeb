@@ -49,6 +49,7 @@ export async function saveUserData(quizResults, cardUrl) {
   const newEntry = push(resultRef);
   const data = {
     userName: quizResults.userName,
+    severity: quizResults.severity,
     allergens: quizResults.allergens,
     cardUrl: cardUrl,
     timestamp: Date.now()
@@ -136,7 +137,9 @@ export async function loadCards(page = 1, search = "", limit = 12) {
     return { cards: [], page: 1, totalPages: 1 };
   }
 
-  const dataArray = Object.values(rawData).sort((a, b) => b.timestamp - a.timestamp);
+  const dataArray = Object.entries(rawData)
+  .map(([id, data]) => ({ id, ...data }))
+  .sort((a, b) => b.timestamp - a.timestamp);
 
   const filtered = search
     ? dataArray.filter(item =>

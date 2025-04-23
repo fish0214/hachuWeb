@@ -7,9 +7,10 @@
     <link rel="icon" href="image/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/intropage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
 </head>
 <body class="gradient-bg scroll-container">
-    <header>
+    <header data-scroll-sticky>
         <div class="desktop-navbar navbar">
             <button class="nav-btn" id="intro-page">關於 hachu</button>
             <button class="nav-btn" id="info-page">hachu 資訊分享</button>
@@ -41,14 +42,10 @@
     </header>
     <main>
         <section class="intro-hachu" id="concept">
-            <div class="introtxt-container">
-                <div>
+            <div class="introtxt-container" data-scroll data-scroll-speed="1">
+                <div class="intro-main-content">
                     <h1>我們是誰？</h1>
-                    <p class="leftin">hachu 是一場融合科技藝術與健康知識的互動展覽，專為對過敏好奇，或想更了解自己身體「小劇場」的人設計。</p>
-                    <h2>在這裡，你不只是參觀者，而是這場體驗的主角——</h2>
-                    <p class="leftin">我們透過視覺化方式，讓你「看見」過敏反應的秘密！<br>
-                        透過 「hachu」你會發現：<br>
-                        過敏不再只是冷冰冰的醫學名詞，而是一場充滿趣味與啟發的探索旅程。</p>
+                    <p class="leftin">「hachu」是一場結合科技藝術與健康知識的互動展覽，<br>專為那些對過敏感到好奇，<br>或者想了解自己身體「小劇場」的人設計。 <br> 在這裡，你不只是參觀者，而是這場體驗的主角—— <br>我們透過視覺化方式，讓你「看見」過敏反應的秘密！</p>
                 </div>
                 <div>
                     <h2>我們希望每個人都能輕鬆理解：</h2>
@@ -70,17 +67,23 @@
                     </ul>
                 </div>
             </div>
-            <div class="introimg-container">
+            <div class="introimg-container" data-scroll data-scroll-speed="2">
                 <div class="img-container">
                     <img src="image/group.JPG" alt="" class="group-img">
                 </div> 
+            </div>
+        </section>
+        <section class="intro-hachu-2" id="concept2">
+            <div class="introtxt-container">
+                <h2 data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2">總之透過「hachu」，你會發現——</h2>
+                <p data-scroll data-scroll-direction="horizontal" data-scroll-speed="2">過敏不再是冷冰冰的醫學名詞，而是一場充滿趣味與啟發的探索旅程！</p>
             </div>
         </section>
         <section class="concept-hachu">
             <div class="introimg-container">
                 <div class="img-container">
                     <img src="webp/pink_1.webp" alt="" class="bubble2 bounce2">
-                    <img src="webp/pink_1.webp" alt="" class="bubble3 bounce3">
+                    <img src="webp/blue_1.webp" alt="" class="bubble3 bounce3">
                     <img src="webp/pink_1.webp" alt="" class="bubble4 bounce4">
                 </div>
             </div>
@@ -94,7 +97,7 @@
         </section>
         <section class="intro-group" id="group">
             <div class="introgroup-title">
-                <img src="webp/pink_1.webp" alt="">
+                <img src="webp/blue_1.webp" alt="">
                 <h1>團隊介紹</h1>
                 <p>我們來自元智大學資訊傳播學系</p>
             </div>
@@ -168,6 +171,8 @@
     </footer>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="js/smoothScroll.js"></script>
     <script src="js/navbarControl.js"></script>
 </body>
 </html>

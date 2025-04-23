@@ -2,7 +2,7 @@
 /* 中文用 源泉圓體  */
 @font-face {
 	font-family: MyCustomFont;
-	src: url(/fonts/GenSenRounded2TW-M.otf);
+	src: url(../fonts/GenSenRounded2TW-M.otf);
 	font-weight: 400;
 	unicode-range: U+4E00-9FFF;
 }
@@ -10,7 +10,7 @@
 /* 英文 */
 @font-face {
 	font-family: MyCustomFont;
-	src: url(/fonts/VarelaRound-Regular.ttf);
+	src: url(../fonts/VarelaRound-Regular.ttf);
 	font-weight: 400;
 	unicode-range: U+00-024F;
 }
@@ -18,8 +18,14 @@
 /* 粗體中文字 */
 @font-face {
 	font-family: HeaderFont;
-	src: url(/fonts/GenSenRounded2TC-H.otf);
+	src: url(../fonts/GenSenRounded2TC-H.otf);
   font-weight: 400;
+}
+
+/* 細體中文字 */
+@font-face {
+	font-family: NormalFont;
+	src: url(../fonts/GenSenRounded2TW-R.otf);
 }
 
 html * {
