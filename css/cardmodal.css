@@ -254,3 +254,58 @@
   color: var(--text-blue-dark);
   margin-bottom: 0;
 }
+.qr-box-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    position: relative;
+    max-width: 345px;
+    top: 45%;
+    border-radius: 20px;
+    height: auto;
+  }
+  .close {
+    position: fixed;
+    top: 5%;
+    right: 8%;
+  }
+  .modal-main-content {
+    position: relative;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .card-wrapper {
+    width: 250px;
+    height: 400px;
+    position: absolute;
+    margin: unset;
+    left: 47.5px;
+    transform: translateY(-70%);
+  }
+  .card-info-box {
+    height: 100%;
+    padding: 165px 15px 15px 15px;
+    max-height: max-content;
+    overflow: visible;
+  }
+  .defense-title {
+    margin-top: 65px;
+  }
+  .qr-box {
+    display: none;
+  }
+  .qr-box-mobile {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+  }
+  .qr-box-mobile a {
+    font-size: 36px;
+    color: var(--text-blue-dark);
+    border-block-end: 1px solid var(--text-blue-dark);
+  }
+}
