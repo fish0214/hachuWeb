@@ -49,8 +49,9 @@ header{
   color: transparent;
   letter-spacing: 15px;
   line-height: 50px;
-  margin: 40px;
+  margin: 75px;
 }
+
 .intro-allery-container {
   display: grid;
   grid-template-columns: 200px 200px 200px;

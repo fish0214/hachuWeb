@@ -99,14 +99,13 @@ function renderAllergyEducation(allergens) {
       icon: "image/allergens/allergen_dust.png",
       traits: [
         {
-          title: "飛散微粒",
-          desc: "牠的屍體與排泄物能輕易飄進空氣裡，讓人鼻塞、流鼻水、眼睛紅腫！"
+          title: "家中潛伏者",
+          desc: "最常見的室內過敏原，喜歡藏身於床墊、地毯、沙發與冷氣機中。"
         }
       ],
       tips: [
-        "1. 定期更換床單、枕頭套",
-        "2. 使用60°C以上熱水清洗布料",
-        "3. 少用布沙發與地毯，改選好清洗材質"
+        "1. 床單被套每週清洗",
+        "2. 定期清潔空調濾網"
       ]
     },
     pollen: {
@@ -114,14 +113,13 @@ function renderAllergyEducation(allergens) {
       icon: "image/allergens/allergen_flower.png",
       traits: [
         {
-          title: "風中潛行",
-          desc: "不是每種花的花粉都會害人，風媒花（如松、柏、艾草）才是罪魁禍首，花粉一飄就攻入你的鼻子與氣管！"
+          title: "季節擾動者",
+          desc: "於春夏季大量釋放花粉，飄逸的花粉能在空氣中停留許久，是戶外族群的惡夢。"
         }
       ],
       tips: [
-        "1. 花粉季外出務必戴口罩",
-        "2. 清晨/黃昏避免外出（花粉濃度高）",
-        "3. 回家後立刻換衣、洗臉、洗手，避免花粉入侵室內"
+        "1. 花粉季節外出時配戴口罩與眼鏡",
+        "2. 回家後立刻洗臉與更換衣物"
       ]
     },
     drug: {
@@ -129,14 +127,13 @@ function renderAllergyEducation(allergens) {
       icon: "image/allergens/allergen_pill.png",
       traits: [
         {
-          title: "藥效逆襲",
-          desc: "你以為藥能治病？某些成分卻可能偷偷逆襲你。青黴素、止痛藥甚至麻醉劑，都可能讓你紅疹、氣喘、甚至過敏性休克！"
+          title: "療癒偽裝者",
+          desc: "藏身於日常藥物中，部分人服用後可能誘發過敏反應，出現紅疹、呼吸困難等症狀。"
         }
       ],
       tips: [
-        "1. 若曾吃藥出現過敏，務必記下藥名",
-        "2. 就診前告知醫師，並考慮過敏測試",
-        "3. 避免自行服藥，謹慎評估風險"
+        "1. 醫療紀錄中註明過敏藥物",
+        "2.  使用藥物前諮詢醫師"
       ]
     },
     food: {
@@ -144,14 +141,13 @@ function renderAllergyEducation(allergens) {
       icon: "image/allergens/allergen_peanut.png",
       traits: [
         {
-          title: "隱藏成分",
-          desc: "花生、蛋、海鮮……有時過敏反應不是吃太多，而是根本不知道它們藏在哪！不小心入口，可能喉嚨腫脹、甚至休克！"
+          title: "隱藏危機者",
+          desc: "化身為花生、蛋、海鮮等日常美食，看似無害卻可能引爆強烈的過敏反應。"
         }
       ],
       tips: [
-        "1. 仔細看食品標示，注意「可能含有○○」",
-        "2. 外食時先告知餐廳你的過敏食材",
-        "3. 隨身攜帶緊急藥物備用"
+        "1. 仔細閱讀食品標示與成分",
+        "2. 外食時主動告知餐廳過敏原" 
       ]
     },
     metal: {
@@ -159,13 +155,13 @@ function renderAllergyEducation(allergens) {
       icon: "image/allergens/allergen_mental.png",
       traits: [
         {
-          title: "金屬伏兵",
-          desc: "別看它閃亮亮，一旦碰上體質敏感的人，「鎳」這種金屬就像伏兵一樣發動攻擊，讓你的皮膚紅腫、癢不停！"
+          title: "陷阱製造者",
+          desc: "外表閃亮奪目，卻潛藏著金屬過敏的隱患——鎳。與皮膚接觸後，容易引發紅腫、搔癢及濕疹。"
         }
       ],
       tips: [
-        "1.優先選擇純銀、純金或鈦金屬飾品",
-        "2. 避免戴合金飾品睡覺，減少接觸時間"
+        "1. 選用純金、純銀、鈦製品",
+        "2. 避免長時間配戴劣質或合金飾品"
       ]
     },
     animal: {
@@ -173,14 +169,13 @@ function renderAllergyEducation(allergens) {
       icon: "image/allergens/allergen_cat.png",
       traits: [
         {
-          title: "隱形附著",
-          desc: "你以為是可愛毛毛？錯！真正惹禍的是牠們皮屑、唾液與尿液裡的蛋白質，會悄悄黏上你，讓你鼻子發癢、氣喘吁吁！"
+          title: "空氣漫遊者",
+          desc: "在空氣中釋放肉眼看不見的皮屑，容易引起鼻塞、打噴嚏與眼睛泛紅。"
         }
       ],
       tips: [
-        "1. 保持室內空氣流通",
-        "2. 使用HEPA濾網空氣清淨機",
-        "3. 擁抱毛孩前，先確定自己不會過敏"
+        "1. 定期清潔居家環境",
+        "2. 使用具過濾功能的空氣清淨機"
       ]
     }
   };
